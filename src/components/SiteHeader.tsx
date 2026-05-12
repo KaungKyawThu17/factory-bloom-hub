@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, ChevronDown, Droplets } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "@/assets/quantum-leap-logo.png";
 
 const services = [
   { to: "/services/production-capabilities", label: "Production Capabilities" },
