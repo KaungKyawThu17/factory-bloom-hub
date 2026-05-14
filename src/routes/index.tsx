@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import heroImg from "@/assets/hero-factory.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import factoryImg from "@/assets/factory-aerial.jpg";
 import splashImg from "@/assets/product-splash.jpg";
 import {
@@ -41,11 +42,17 @@ function Home() {
     <Layout>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-hero text-white">
-        <div className="absolute inset-0 bg-gradient-glow opacity-80" />
-        <div
-          className="absolute inset-0 opacity-30 mix-blend-luminosity"
-          style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        <video
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          src={heroVideo}
+          poster={heroImg}
+          autoPlay
+          muted
+          loop
+          playsInline
         />
+        <div className="absolute inset-0 bg-gradient-hero opacity-70" />
+        <div className="absolute inset-0 bg-gradient-glow opacity-80" />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-8 pt-16 pb-24 md:pt-20 md:pb-28 lg:pt-24 lg:pb-32">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium uppercase tracking-widest mb-6">
