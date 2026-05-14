@@ -4,18 +4,34 @@ import { PageHero } from "@/components/PageHero";
 import { ArrowRight } from "lucide-react";
 
 export function ServicePage({
-  eyebrow, title, subtitle, intro, sections,
+  eyebrow, title, subtitle, intro, introHeadline, introBody, sections,
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
   intro?: string;
+  introHeadline?: string;
+  introBody?: string;
   sections: { heading: string; body?: string; bullets?: string[]; items?: { title: string; body: string }[] }[];
 }) {
   return (
     <Layout>
       <PageHero eyebrow={eyebrow} title={title} subtitle={subtitle} />
       <section className="py-20 mx-auto max-w-5xl px-4 lg:px-8">
+        {(introHeadline || introBody) && (
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start mb-14">
+            {introHeadline && (
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-foreground">
+                {introHeadline}
+              </h2>
+            )}
+            {introBody && (
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                {introBody}
+              </p>
+            )}
+          </div>
+        )}
         {intro && <p className="text-lg text-muted-foreground leading-relaxed mb-12">{intro}</p>}
         <div className="space-y-12">
           {sections.map((s, i) => (
