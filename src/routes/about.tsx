@@ -64,7 +64,7 @@ function About() {
       <section className="py-20 mx-auto max-w-7xl px-4 lg:px-8">
         <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-3 text-center">Message from the Board</div>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-10">A welcome from our Board of Directors</h2>
-        <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-center rounded-3xl bg-gradient-brand text-white p-10 md:p-14 shadow-glow">
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-center rounded-3xl bg-gradient-brand text-white p-8 md:p-12 shadow-glow">
           <div>
             <Quote className="h-12 w-12 text-white/40 mb-6" />
             <div className="space-y-5 text-white/90 leading-relaxed">
