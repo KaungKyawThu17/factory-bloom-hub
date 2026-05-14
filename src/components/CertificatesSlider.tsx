@@ -46,7 +46,7 @@ export function CertificatesSlider() {
                           src={c.src}
                           alt={c.label}
                           loading="lazy"
-                          className="h-full w-full object-contain"
+                          className="h-full w-full object-cover"
                         />
                       </div>
                     </div>
