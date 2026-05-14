@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import { PageHero } from "@/components/PageHero";
-import { Factory, Beaker, Building2, BadgeCheck, Boxes, Lightbulb, ArrowRight } from "lucide-react";
+import { Factory, Beaker, Building2, Boxes, Lightbulb, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
