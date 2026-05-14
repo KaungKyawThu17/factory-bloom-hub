@@ -73,7 +73,7 @@ function About() {
               <p>We firmly believe that sustainable success is built upon integrity, innovation, and strong relationships with our customers, employees, suppliers, and business partners. Together with our management team and employees, we will continue working passionately to deliver products that consumers can enjoy with confidence.</p>
             </div>
           </div>
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-center md:items-start">
             <img
               src={boardDirectorImg}
               alt="Ko Alvin Aung Zin, Managing Director"
