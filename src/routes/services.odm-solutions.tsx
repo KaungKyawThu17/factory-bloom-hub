@@ -10,8 +10,8 @@ export const Route = createFileRoute("/services/odm-solutions")({
     <ServicePage
       eyebrow="Services / ODM"
       title="ODM Solutions"
-      subtitle="From product idea to market-ready beverage."
-      intro="Our ODM Beverage Solution is suitable for brands that want to create a new beverage product but need support with product direction, packaging format, production feasibility, and manufacturing planning. Quantum Leap works with brand partners to develop a practical beverage concept that fits market needs, factory capability, and commercial production planning."
+      introHeadline="From product idea to market-ready beverage"
+      introBody={`Our ODM Beverage Solution is suitable for brands that want to create a new beverage product but need support with product direction, packaging format, production feasibility, and manufacturing planning.\n\nQuantum Leap can work together with brand partners to develop a practical beverage concept that fits market needs, factory capability, packaging requirements, and commercial production planning.`}
       sections={[
         { heading: "Formula • Packaging Design • Quality Control", items: [
           { title: "Product Selection", body: "Choosing from the factory's existing beverage formulas and product categories." },
