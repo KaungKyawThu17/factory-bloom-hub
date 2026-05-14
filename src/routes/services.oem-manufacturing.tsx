@@ -10,8 +10,8 @@ export const Route = createFileRoute("/services/oem-manufacturing")({
     <ServicePage
       eyebrow="Services / OEM"
       title="OEM Manufacturing"
-      subtitle="Reliable production for your beverage brand."
-      intro="Our OEM Beverage Manufacturing service is designed for brands that already have their own product formula, brand concept, or packaging direction. Quantum Leap supports the manufacturing process by producing beverages according to agreed product specifications, quality standards, and production requirements — so brand owners can focus on sales, marketing, and distribution."
+      introHeadline="Reliable production for your beverage brand"
+      introBody={`Our OEM Beverage Manufacturing service is designed for brands that already have their own product formula, brand concept, or packaging direction. Quantum Leap supports the manufacturing process by producing beverages according to agreed product specifications, quality standards, and production requirements.\n\nWe help brand owners focus on sales, marketing, and distribution while our factory team handles professional beverage production.`}
       sections={[
         { heading: "PET Manufacturing — Our 8-Step Process", items: [
           { title: "Consultation & Requirement Discussion", body: "Understanding the client's product concept, target market, packaging needs, and production requirements." },
