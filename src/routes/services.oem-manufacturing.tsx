@@ -140,12 +140,25 @@ function OemManufacturing() {
                     </div>
 
                     <div className={`md:w-1/2 mt-4 md:mt-0 ${isLeft ? "md:pl-16" : "md:pr-16"}`}>
-                      <div className={`group bg-card p-6 md:p-8 rounded-2xl border border-border shadow-sm hover:shadow-glow hover:border-primary/30 transition-all ${isLeft ? "" : "md:text-right"}`}>
-                        <div className={`inline-flex items-center justify-center h-11 w-11 rounded-xl bg-gradient-brand mb-4 group-hover:scale-110 transition ${isLeft ? "" : "md:ml-auto"}`}>
-                          <Icon className="h-5 w-5 text-white" />
+                      <div className={`group bg-card rounded-2xl border border-border shadow-sm hover:shadow-glow hover:border-primary/30 transition-all overflow-hidden ${isLeft ? "" : "md:text-right"}`}>
+                        {step.image && (
+                          <div className="relative h-48 w-full overflow-hidden">
+                            <img
+                              src={step.image}
+                              alt={step.title}
+                              className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                          </div>
+                        )}
+                        <div className="p-6 md:p-8">
+                          <div className={`inline-flex items-center justify-center h-11 w-11 rounded-xl bg-gradient-brand mb-4 group-hover:scale-110 transition ${isLeft ? "" : "md:ml-auto"}`}>
+                            <Icon className="h-5 w-5 text-white" />
+                          </div>
+                          <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
                         </div>
-                        <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
                       </div>
                     </div>
                   </div>
