@@ -172,6 +172,8 @@ function OemManufacturing() {
           </div>
         </div>
       </section>
+
+      <CertificatesSlider />
     </Layout>
   );
 }
