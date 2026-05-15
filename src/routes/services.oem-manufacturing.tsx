@@ -5,6 +5,7 @@ import {
   ArrowLeft, ArrowRight, MessagesSquare, FlaskConical, TestTube2, Package,
   Calculator, BadgeCheck, Factory, Truck,
 } from "lucide-react";
+import clientMeetingImg from "@/assets/client-meeting.webp";
 
 export const Route = createFileRoute("/services/oem-manufacturing")({
   head: () => ({ meta: [
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/services/oem-manufacturing")({
 });
 
 const steps = [
-  { icon: MessagesSquare, title: "Consultation & Requirement Discussion", body: "Understanding the client's product concept, target market, packaging needs, and production requirements." },
+  { icon: MessagesSquare, title: "Consultation & Requirement Discussion", body: "Understanding the client's product concept, target market, packaging needs, and production requirements.", image: clientMeetingImg },
   { icon: FlaskConical,   title: "Research & Formula Development",        body: "Developing customized beverage formulas and product samples based on the client's preferences." },
   { icon: TestTube2,      title: "Sampling & Product Testing",            body: "Conducting taste tests, quality checks, and product stability evaluations before approval." },
   { icon: Package,        title: "Packaging & Bottle Development",        body: "Designing or developing PET bottles, labels, caps, and carton packaging solutions." },
