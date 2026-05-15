@@ -1,20 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "@/assets/quantum-leap-logo.png";
-
-const services = [
-  { to: "/services/production-capabilities", label: "Production Capabilities" },
-  { to: "/services/product-development", label: "Product Development" },
-  { to: "/services/factory-facilities", label: "Factory & Facilities" },
-  
-  { to: "/services/oem-manufacturing", label: "OEM Manufacturing" },
-  { to: "/services/odm-solutions", label: "ODM Solutions" },
-] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [mobileServices, setMobileServices] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
