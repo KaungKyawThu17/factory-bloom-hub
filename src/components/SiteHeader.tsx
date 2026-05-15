@@ -19,11 +19,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <img src={logo} alt="Quantum Leap" className="h-10 w-10 object-contain" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src={logo} alt="Quantum Leap" className="h-14 w-14 object-contain" />
           <div className="leading-tight">
-            <div className="font-display text-[15px] font-bold tracking-tight">Quantum Leap</div>
-            <div className="text-[9px] uppercase tracking-[0.22em] text-muted-foreground">Beverage Mfg.</div>
+            <div className="font-display text-lg font-bold tracking-tight">Quantum Leap</div>
+            <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Beverage Mfg.</div>
           </div>
         </Link>
 
@@ -31,25 +31,7 @@ export function SiteHeader() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/products">Products</NavLink>
-          <div className="relative group">
-            <button className="flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-foreground/75 hover:text-foreground rounded-md transition-colors">
-              Services <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180" />
-            </button>
-            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <div className="w-72 rounded-2xl border border-border bg-popover p-2 shadow-glow">
-                {services.map((s) => (
-                  <Link
-                    key={s.to}
-                    to={s.to}
-                    activeProps={{ className: "bg-primary/10 text-primary" }}
-                    className="block rounded-lg px-3 py-2.5 text-sm text-popover-foreground hover:bg-muted transition-colors"
-                  >
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+          <NavLink to="/services">Services</NavLink>
           <NavLink to="/faq">FAQ</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </nav>
