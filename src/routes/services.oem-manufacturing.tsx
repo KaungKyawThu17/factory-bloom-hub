@@ -121,7 +121,7 @@ function OemManufacturing() {
 
             <div className="space-y-10 md:space-y-16 relative">
               {steps.map((step, i) => {
-                const Icon = step.icon;
+                
                 const isLeft = i % 2 === 0;
                 const isAccent = i === 0 || i === steps.length - 1;
                 return (
@@ -160,9 +160,6 @@ function OemManufacturing() {
                           </div>
                         )}
                         <div className="p-6 md:p-8">
-                          <div className={`inline-flex items-center justify-center h-11 w-11 rounded-xl bg-gradient-brand mb-4 group-hover:scale-110 transition ${isLeft ? "" : "md:ml-auto"}`}>
-                            <Icon className="h-5 w-5 text-white" />
-                          </div>
                           <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
                           <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
                         </div>
