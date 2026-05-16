@@ -121,7 +121,7 @@ function OemManufacturing() {
 
             <div className="space-y-10 md:space-y-16 relative">
               {steps.map((step, i) => {
-                const Icon = step.icon;
+                
                 const isLeft = i % 2 === 0;
                 const isAccent = i === 0 || i === steps.length - 1;
                 return (
