@@ -6,7 +6,7 @@ import factoryImg from "@/assets/factory-aerial.jpg";
 import splashImg from "@/assets/product-splash.jpg";
 import {
   Factory, Beaker, ShieldCheck, Gauge, Boxes, Award,
-  Zap, Coffee, Droplets, Leaf, Citrus, Milk, ArrowRight, CheckCircle2
+  ArrowRight, CheckCircle2
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -28,13 +28,21 @@ const highlights = [
   { icon: Beaker, title: "Flexible Formats", desc: "Multiple packaging sizes and types" },
 ];
 
-const products = [
-  { icon: Zap, name: "Energy Drinks", color: "from-orange-500/20 to-yellow-500/10" },
-  { icon: Droplets, name: "Soft Drinks", color: "from-cyan-500/20 to-blue-500/10" },
-  { icon: Citrus, name: "Fruit Juices", color: "from-amber-500/20 to-orange-500/10" },
-  { icon: Leaf, name: "Electrolyte", color: "from-emerald-500/20 to-teal-500/10" },
-  { icon: Coffee, name: "Tea & Functional", color: "from-amber-700/20 to-yellow-700/10" },
-  { icon: Milk, name: "UHT Dairy & Soy", color: "from-slate-300/30 to-blue-200/10" },
+const packagingProducts = [
+  "Plastic Cap",
+  "PET Bottle",
+  "PET Preform",
+  "Aluminum Cap",
+  "Label",
+  "Customized Services",
+];
+
+const beverageProducts = [
+  "Energy Drinks / Electrolyte Beverages",
+  "Soft Drinks / Carbonated Beverages",
+  "Fruit Juices / Flavored Drinks",
+  "Tea & Functional Beverages",
+  "Dairy & Soy Milk (Coming in 2026)",
 ];
 
 function Home() {
