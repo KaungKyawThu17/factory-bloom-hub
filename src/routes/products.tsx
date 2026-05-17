@@ -19,12 +19,12 @@ export const Route = createFileRoute("/products")({
 });
 
 const products = [
-  { icon: Zap, name: "Energy Drinks", desc: "Manufacturing solutions for high-performance energy beverages with customizable formulations, flavors, and packaging formats." },
-  { icon: Droplets, name: "Soft Drinks", desc: "Carbonated and non-carbonated beverage production tailored for local and export market requirements." },
-  { icon: Citrus, name: "Fruit Juices", desc: "Production of fruit juice beverages including orange, pineapple, cantaloupe, lychee, and customized formulations." },
-  { icon: Leaf, name: "Electrolyte Beverages", desc: "Functional hydration beverages manufactured with consistent quality and advanced processing systems." },
-  { icon: Sparkles, name: "Flavored Drinks", desc: "Innovative flavored beverages with nata de coco and fruit-based variations designed for evolving consumer preferences." },
-  { icon: Coffee, name: "Tea & Functional", desc: "Tea-based and functional beverages for everyday wellness and performance." },
+  { name: "Energy Drinks", desc: "Manufacturing solutions for high-performance energy beverages with customizable formulations, flavors, and packaging formats." },
+  { name: "Soft Drinks", desc: "Carbonated and non-carbonated beverage production tailored for local and export market requirements." },
+  { name: "Fruit Juices", desc: "Production of fruit juice beverages including orange, pineapple, cantaloupe, lychee, and customized formulations." },
+  { name: "Electrolyte Beverages", desc: "Functional hydration beverages manufactured with consistent quality and advanced processing systems." },
+  { name: "Flavored Drinks", desc: "Innovative flavored beverages with nata de coco and fruit-based variations designed for evolving consumer preferences." },
+  { name: "Tea & Functional", desc: "Tea-based and functional beverages for everyday wellness and performance." },
 ];
 
 const upcoming = [
@@ -33,40 +33,12 @@ const upcoming = [
 ];
 
 const packagingProducts = [
-  {
-    icon: Circle,
-    title: "Plastic Cap",
-    image: plasticCapImg,
-    items: ["Beverage bottle caps", "Closure solutions for PET bottles"],
-  },
-  {
-    icon: Package,
-    title: "PET Bottle",
-    image: petBottleImg,
-    items: ["Hot-fill bottles", "Carbonated drink bottles", "Customized PET packaging"],
-  },
-  {
-    icon: Box,
-    title: "PET Preform",
-    items: ["PET preforms for bottle manufacturing", "Crystallized & non-crystallized preforms", "CSD (carbonated soft drink) preforms"],
-  },
-  {
-    icon: Circle,
-    title: "Aluminum Cap",
-    image: aluminumCapImg,
-    items: ["Aluminum beverage closures", "Tamper-evident caps"],
-  },
-  {
-    icon: Tag,
-    title: "Label",
-    image: labelImg,
-    items: ["Shrink sleeve labels", "Beverage packaging labels"],
-  },
-  {
-    icon: Layers,
-    title: "Customized Services",
-    items: ["OEM packaging development", "Custom bottle and cap design"],
-  },
+  { title: "Plastic Cap", image: plasticCapImg, items: ["Beverage bottle caps", "Closure solutions for PET bottles"] },
+  { title: "PET Bottle", image: petBottleImg, items: ["Hot-fill bottles", "Carbonated drink bottles", "Customized PET packaging"] },
+  { title: "PET Preform", image: petPreformImg, items: ["PET preforms for bottle manufacturing", "Crystallized & non-crystallized preforms", "CSD (carbonated soft drink) preforms"] },
+  { title: "Aluminum Cap", image: aluminumCapImg, items: ["Aluminum beverage closures", "Tamper-evident caps"] },
+  { title: "Label", image: labelImg, items: ["Shrink sleeve labels", "Beverage packaging labels"] },
+  { title: "Customized Services", items: ["OEM packaging development", "Custom bottle and cap design"] },
 ];
 
 function Products() {
@@ -76,11 +48,8 @@ function Products() {
 
       <section className="py-20 mx-auto max-w-7xl px-4 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map(({ icon: Icon, name, desc }) => (
+          {products.map(({ name, desc }) => (
             <article key={name} className="group rounded-3xl border border-border bg-card p-8 hover:border-primary/40 hover:shadow-glow transition">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                <Icon className="h-7 w-7 text-white" />
-              </div>
               <h3 className="font-display text-2xl font-bold mb-3">{name}</h3>
               <p className="text-muted-foreground leading-relaxed">{desc}</p>
             </article>
@@ -112,7 +81,7 @@ function Products() {
           <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">Packaging Products</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {packagingProducts.map(({ icon: Icon, title, items, image }) => (
+          {packagingProducts.map(({ title, items, image }) => (
             <article key={title} className="group rounded-3xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition">
               {image && (
                 <div className="relative h-48 w-full overflow-hidden bg-muted">
@@ -120,9 +89,6 @@ function Products() {
                 </div>
               )}
               <div className="p-8">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                  <Icon className="h-7 w-7 text-white" />
-                </div>
                 <h3 className="font-display text-2xl font-bold mb-4">{title}</h3>
                 <ul className="space-y-2">
                   {items.map((item) => (
