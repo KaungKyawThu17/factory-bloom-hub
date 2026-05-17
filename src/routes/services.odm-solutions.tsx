@@ -5,6 +5,11 @@ import {
   ArrowLeft, ArrowRight, Sparkles, Package, CheckCircle2,
   Calculator, BadgeCheck, Factory, Truck,
 } from "lucide-react";
+import productSelectionImg from "@/assets/odm-product-selection.webp";
+import brandSelectImg from "@/assets/odm-brand-select.webp";
+import sampleConfirmImg from "@/assets/odm-sample-confirm.webp";
+import massProductionImg from "@/assets/odm-mass-production.webp";
+import deliveryImg from "@/assets/odm-delivery.webp";
 
 export const Route = createFileRoute("/services/odm-solutions")({
   head: () => ({ meta: [
@@ -15,13 +20,13 @@ export const Route = createFileRoute("/services/odm-solutions")({
 });
 
 const steps = [
-  { icon: Sparkles,    title: "Product Selection",              body: "Choosing from the factory's existing beverage formulas and product categories." },
-  { icon: Package,     title: "Packaging & Branding Selection", body: "Selecting bottle types, packaging options, and customizing labels with the client's brand identity." },
-  { icon: CheckCircle2,title: "Sample Confirmation",            body: "Reviewing and approving product samples, packaging, and final artwork before production." },
+  { icon: Sparkles,    title: "Product Selection",              body: "Choosing from the factory's existing beverage formulas and product categories.", image: productSelectionImg },
+  { icon: Package,     title: "Packaging & Branding Selection", body: "Selecting bottle types, packaging options, and customizing labels with the client's brand identity.", image: brandSelectImg },
+  { icon: CheckCircle2,title: "Sample Confirmation",            body: "Reviewing and approving product samples, packaging, and final artwork before production.", image: sampleConfirmImg },
   { icon: Calculator,  title: "Costing & Production Planning",  body: "Confirming pricing, MOQ, lead time, and production schedule." },
   { icon: BadgeCheck,  title: "Regulatory Documentation",       body: "Preparing necessary certifications and product compliance documents for distribution." },
-  { icon: Factory,     title: "Mass Production",                body: "Producing the selected beverage products using existing manufacturing systems and formulas." },
-  { icon: Truck,       title: "Delivery & Distribution",        body: "Delivering completed products to warehouses, distributors, or export channels." },
+  { icon: Factory,     title: "Mass Production",                body: "Producing the selected beverage products using existing manufacturing systems and formulas.", image: massProductionImg },
+  { icon: Truck,       title: "Delivery & Distribution",        body: "Delivering completed products to warehouses, distributors, or export channels.", image: deliveryImg },
 ];
 
 function OdmSolutions() {
@@ -137,9 +142,17 @@ function OdmSolutions() {
                     </div>
 
                     <div className={`md:w-1/2 mt-4 md:mt-0 ${isLeft ? "md:pl-16" : "md:pr-16"}`}>
-                      <div className={`group bg-card p-6 md:p-8 rounded-2xl border border-border shadow-sm hover:shadow-glow hover:border-primary/30 transition-all ${isLeft ? "" : "md:text-right"}`}>
-                        <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
+                      <div className={`group bg-card rounded-2xl border border-border shadow-sm hover:shadow-glow hover:border-primary/30 transition-all overflow-hidden ${isLeft ? "" : "md:text-right"}`}>
+                        {step.image && (
+                          <div className="relative h-48 w-full overflow-hidden">
+                            <img src={step.image} alt={step.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
+                          </div>
+                        )}
+                        <div className="p-6 md:p-8">
+                          <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
