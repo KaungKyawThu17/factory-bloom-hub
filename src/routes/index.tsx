@@ -6,7 +6,7 @@ import factoryImg from "@/assets/factory-aerial.jpg";
 import splashImg from "@/assets/product-splash.jpg";
 import {
   Factory, Beaker, ShieldCheck, Gauge, Boxes, Award,
-  Milk, ArrowRight, CheckCircle2
+  Milk, ArrowRight, CheckCircle2, Heart, Leaf, Globe, Lightbulb
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -43,6 +43,29 @@ const beverageProducts = [
   "Fruit Juices / Flavored Drinks",
   "Tea & Functional Beverages",
   "Dairy & Soy Milk (Coming in 2026)",
+];
+
+const coreValues = [
+  {
+    icon: Heart,
+    title: "Employee Well-Being",
+    desc: "We value our people as the driving force behind our success. Quantum Leap promotes a positive workplace culture that prioritizes safety, respect, teamwork, and professional growth.",
+  },
+  {
+    icon: Leaf,
+    title: "Environmental Responsibility",
+    desc: "Sustainability is integrated into our operations. We continuously improve our manufacturing processes to reduce environmental impact through efficient resource management and responsible packaging solutions.",
+  },
+  {
+    icon: Globe,
+    title: "Community & Social Responsibility",
+    desc: "Quantum Leap believes in building meaningful contributions to society by maintaining ethical business practices, supporting local communities, and creating trusted partnerships with customers and stakeholders.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation & Packaging Development",
+    desc: "With advanced manufacturing capabilities, Quantum Leap develops customized PET bottles, closures, and packaging solutions designed to support diverse beverage categories and evolving consumer demands.",
+  },
 ];
 
 function Home() {
@@ -184,6 +207,55 @@ function Home() {
           <Link to="/products" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3.5 font-semibold hover:bg-primary transition">
             View all products <ArrowRight className="h-4 w-4" />
           </Link>
+        </div>
+      </section>
+
+      {/* CORE VALUES */}
+      <section className="py-20 bg-muted/40">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Our Core Values</div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold">What drives everything we do</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {coreValues.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="group rounded-2xl border border-border bg-card p-8 hover:shadow-glow hover:border-primary/30 transition-all">
+                <div className="h-12 w-12 rounded-xl bg-gradient-brand flex items-center justify-center mb-5 group-hover:scale-110 transition">
+                  <Icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-display text-xl font-bold mb-3">{title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="py-24 mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Why Choose Us</div>
+            <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight mb-6">
+              Myanmar's premier <span className="text-gradient">OEM partner</span>.
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Quantum Leap is strategically positioned to become Myanmar's premier OEM beverage manufacturing partner. Our modernized facility, scalable production systems, and investment in advanced manufacturing technologies allow us to support both emerging and established beverage brands with efficiency, consistency, and reliability.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-gradient-hero p-10 md:p-14 text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-glow opacity-40" />
+            <div className="relative">
+              <div className="grid gap-6">
+                {["Modernized facility with 24,000 BPH capacity", "Scalable production systems for any brand size", "Advanced manufacturing technologies", "FDA & Halal certified operations", "End-to-end OEM & ODM solutions"].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
+                    <span className="font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
