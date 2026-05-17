@@ -6,7 +6,7 @@ import factoryImg from "@/assets/factory-aerial.jpg";
 import splashImg from "@/assets/product-splash.jpg";
 import {
   Factory, Beaker, ShieldCheck, Gauge, Boxes, Award,
-  Zap, Coffee, Droplets, Leaf, Citrus, Milk, ArrowRight, CheckCircle2
+  Milk, ArrowRight, CheckCircle2
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -28,13 +28,21 @@ const highlights = [
   { icon: Beaker, title: "Flexible Formats", desc: "Multiple packaging sizes and types" },
 ];
 
-const products = [
-  { icon: Zap, name: "Energy Drinks", color: "from-orange-500/20 to-yellow-500/10" },
-  { icon: Droplets, name: "Soft Drinks", color: "from-cyan-500/20 to-blue-500/10" },
-  { icon: Citrus, name: "Fruit Juices", color: "from-amber-500/20 to-orange-500/10" },
-  { icon: Leaf, name: "Electrolyte", color: "from-emerald-500/20 to-teal-500/10" },
-  { icon: Coffee, name: "Tea & Functional", color: "from-amber-700/20 to-yellow-700/10" },
-  { icon: Milk, name: "UHT Dairy & Soy", color: "from-slate-300/30 to-blue-200/10" },
+const packagingProducts = [
+  "Plastic Cap",
+  "PET Bottle",
+  "PET Preform",
+  "Aluminum Cap",
+  "Label",
+  "Customized Services",
+];
+
+const beverageProducts = [
+  "Energy Drinks / Electrolyte Beverages",
+  "Soft Drinks / Carbonated Beverages",
+  "Fruit Juices / Flavored Drinks",
+  "Tea & Functional Beverages",
+  "Dairy & Soy Milk (Coming in 2026)",
 ];
 
 function Home() {
@@ -141,20 +149,37 @@ function Home() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
           <div>
             <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Product Categories</div>
-            <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight">From energy to UHT — we build the beverages people love.</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight">Packaging and beverages under one roof.</h2>
           </div>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Our facility supports a broad range of beverage categories with consistent quality, scalable batch sizes, and flexible packaging — ready for any brand vision.
+            From PET bottles and caps to finished beverages — we supply the complete manufacturing and packaging ecosystem your brand needs.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {products.map(({ icon: Icon, name, color }) => (
-            <div key={name} className={`group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br ${color} p-6 aspect-[5/4] flex flex-col justify-between hover:shadow-soft transition`}>
-              <Icon className="h-8 w-8 text-foreground/70" />
-              <div className="font-display text-xl font-bold">{name}</div>
-            </div>
-          ))}
+
+        <div className="mb-16">
+          <h3 className="font-display text-2xl font-bold mb-6">Packaging Products</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {packagingProducts.map((name) => (
+              <div key={name} className="group rounded-2xl border border-border bg-card p-6 flex items-center gap-3 hover:border-primary/40 hover:shadow-glow transition">
+                <span className="mt-0.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                <span className="font-display text-base font-semibold">{name}</span>
+              </div>
+            ))}
+          </div>
         </div>
+
+        <div>
+          <h3 className="font-display text-2xl font-bold mb-6">Beverage OEM Products</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {beverageProducts.map((name) => (
+              <div key={name} className="group rounded-2xl border border-border bg-card p-6 flex items-center gap-3 hover:border-primary/40 hover:shadow-glow transition">
+                <span className="mt-0.5 h-2 w-2 rounded-full bg-accent shrink-0" />
+                <span className="font-display text-base font-semibold">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="text-center mt-10">
           <Link to="/products" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3.5 font-semibold hover:bg-primary transition">
             View all products <ArrowRight className="h-4 w-4" />
