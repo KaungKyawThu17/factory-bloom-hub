@@ -4,6 +4,11 @@ import heroImg from "@/assets/hero-factory.jpg";
 import heroVideo from "@/assets/hero-video.mp4";
 import factoryImg from "@/assets/factory-aerial.jpg";
 import splashImg from "@/assets/product-splash.jpg";
+import plasticCapImg from "@/assets/pkg-plastic-cap.webp";
+import petBottleImg from "@/assets/pkg-pet-bottle.webp";
+import petPreformImg from "@/assets/pkg-pet-preform.webp";
+import aluminumCapImg from "@/assets/pkg-aluminum-cap.webp";
+import labelImg from "@/assets/pkg-label.jpeg";
 import {
   Factory, Beaker, ShieldCheck, Gauge, Boxes, Award,
   Milk, ArrowRight, CheckCircle2, Heart, Leaf, Globe, Lightbulb
