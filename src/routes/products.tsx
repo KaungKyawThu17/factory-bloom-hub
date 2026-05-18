@@ -76,11 +76,15 @@ function Products() {
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">Upcoming categories</h2>
           </div>
           <div className="grid gap-6 max-w-xl mx-auto">
-            {upcoming.map(({ icon: Icon, name, desc }) => (
-              <div key={name} className="rounded-3xl bg-card border-2 border-dashed border-primary/30 p-10">
-                <Icon className="h-10 w-10 text-primary mb-5" />
-                <h3 className="font-display text-2xl font-bold mb-3">{name}</h3>
-                <p className="text-muted-foreground leading-relaxed">{desc}</p>
+            {upcoming.map(({ image, name, desc }) => (
+              <div key={name} className="rounded-3xl bg-card border-2 border-dashed border-primary/30 overflow-hidden">
+                <div className="relative h-56 w-full overflow-hidden bg-muted">
+                  <img src={image} alt={name} className="h-full w-full object-cover" loading="lazy" />
+                </div>
+                <div className="p-10">
+                  <h3 className="font-display text-2xl font-bold mb-3">{name}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
