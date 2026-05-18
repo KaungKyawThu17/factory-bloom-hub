@@ -192,6 +192,16 @@ function OemManufacturing() {
 
                     <div className={`md:w-1/2 mt-4 md:mt-0 ${isLeft ? "md:pl-16" : "md:pr-16"}`}>
                       <div className={`group bg-card rounded-2xl border border-border shadow-sm hover:shadow-glow hover:border-primary/30 transition-all overflow-hidden ${isLeft ? "" : "md:text-right"}`}>
+                        {step.image && (
+                          <div className="aspect-[16/9] overflow-hidden bg-muted">
+                            <img
+                              src={step.image}
+                              alt={step.title}
+                              loading="lazy"
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+                        )}
                         <div className="p-6 md:p-8">
                           <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
                           <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
