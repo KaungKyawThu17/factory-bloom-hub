@@ -3,17 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
-  ArrowLeft, ArrowRight, MessagesSquare, FlaskConical, TestTube2, Package,
-  Calculator, BadgeCheck, Factory, Truck, Container, Clock,
+  ArrowLeft, ArrowRight, Package, Container, Clock,
 } from "lucide-react";
-import clientMeetingImg from "@/assets/client-meeting.webp";
-import researchFormulaImg from "@/assets/oem-research-formula.webp";
-import productTestingImg from "@/assets/oem-product-testing.webp";
-import packagingBottleImg from "@/assets/oem-packaging-bottle.webp";
-import costingQuotationImg from "@/assets/oem-costing-quotation.webp";
-import regulatoryImg from "@/assets/oem-regulatory.webp";
-import massProductionImg from "@/assets/oem-mass-production.webp";
-import packagingDeliveryImg from "@/assets/oem-packaging-delivery.webp";
 
 export const Route = createFileRoute("/services/oem-manufacturing")({
   head: () => ({ meta: [
