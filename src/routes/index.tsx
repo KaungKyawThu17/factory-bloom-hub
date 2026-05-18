@@ -123,12 +123,13 @@ function ProductCard({ product }: { product: Product }) {
         )}
         {image ? (
           <img
+            ref={imgRef}
             src={image}
             alt={name}
             loading="lazy"
             decoding="async"
             onLoad={() => setLoaded(true)}
-            className={`h-full w-full object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
