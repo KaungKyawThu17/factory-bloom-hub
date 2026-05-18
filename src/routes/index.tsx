@@ -438,8 +438,8 @@ function Home() {
           <div className="relative rounded-3xl bg-gradient-hero overflow-hidden text-white">
             <div className="absolute inset-0 bg-gradient-glow opacity-60" />
             <img src={splashImg} alt="" className="absolute right-0 top-1/2 -translate-y-1/2 h-[120%] opacity-20 hidden md:block" loading="lazy" />
-            <div className="grid md:grid-cols-2 items-center relative z-10">
-              <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[380px] overflow-hidden order-last md:order-first">
+            <div className="grid md:grid-cols-2 items-stretch relative z-10">
+              <div className="relative h-72 md:h-auto md:min-h-[400px] overflow-hidden order-last md:order-first">
                 <img src={welcomeImg} alt="Quantum Leap team welcome" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-primary/70 via-primary/20 to-transparent md:from-transparent md:via-primary/10 md:to-primary/40" />
               </div>

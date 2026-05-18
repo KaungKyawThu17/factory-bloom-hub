@@ -253,8 +253,8 @@ function OemManufacturing() {
         <div className="max-w-5xl mx-auto">
           <div className="relative bg-gradient-hero rounded-3xl overflow-hidden text-white shadow-glow">
             <div className="absolute inset-0 bg-gradient-glow opacity-60" />
-            <div className="grid md:grid-cols-2 items-center relative z-10">
-              <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[340px] overflow-hidden">
+            <div className="grid md:grid-cols-2 items-stretch relative z-10">
+              <div className="relative h-64 md:h-auto md:min-h-[360px] overflow-hidden">
                 <img src={welcomeImg} alt="Quantum Leap team welcome" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary/70 via-primary/20 to-transparent md:from-transparent md:via-primary/10 md:to-primary/40" />
               </div>
