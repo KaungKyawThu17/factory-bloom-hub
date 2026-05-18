@@ -15,14 +15,18 @@ export const Route = createFileRoute("/services/oem-manufacturing")({
 });
 
 const steps = [
-  { icon: MessagesSquare, title: "Consultation & Requirement Discussion", body: "Understanding the client's product concept, target market, packaging needs, and production requirements.", image: clientMeetingImg },
-  { icon: FlaskConical,   title: "Research & Formula Development",        body: "Developing customized beverage formulas and product samples based on the client's preferences.", image: researchFormulaImg },
-  { icon: TestTube2,      title: "Sampling & Product Testing",            body: "Conducting taste tests, quality checks, and product stability evaluations before approval.", image: productTestingImg },
-  { icon: Package,        title: "Packaging & Bottle Development",        body: "Designing or developing PET bottles, labels, caps, and carton packaging solutions.", image: packagingBottleImg },
-  { icon: Calculator,     title: "Costing & Quotation",                   body: "Preparing production costing, MOQ, timeline, and commercial proposal for client approval.", image: costingQuotationImg },
-  { icon: BadgeCheck,     title: "Regulatory & Certification Support",    body: "Supporting product registration, FDA compliance, Halal certification, and documentation processes.", image: regulatoryImg },
-  { icon: Factory,        title: "Mass Production",                       body: "Executing large-scale production with controlled manufacturing and quality assurance procedures.", image: massProductionImg },
-  { icon: Truck,          title: "Packaging & Delivery",                  body: "Packing finished products and arranging delivery or export shipment to the client.", image: packagingDeliveryImg },
+  { title: "Product Consultation & Packaging Development", body: "We begin by understanding the customer's beverage category, target market, packaging requirements, bottle size, and branding objectives. Our team supports bottle design discussions, packaging structure planning, and production feasibility evaluation." },
+  { title: "PET Preform Preparation", body: "Food-grade PET preforms are prepared according to required bottle specifications including neck finish, bottle volume, and product compatibility to ensure consistent packaging quality and structural integrity." },
+  { title: "Bottle Blowing Process", body: "Using high-speed blowing systems, PET preforms are heated and stretch-blown into customized bottle shapes. This process ensures lightweight, durable, and high-quality beverage packaging suitable for multiple beverage categories." },
+  { title: "Water Treatment System", body: "Our water treatment systems utilize advanced purification technologies including multi-stage filtration, activated carbon treatment, and reverse osmosis systems to ensure product safety and beverage quality." },
+  { title: "Raw Material Inspection", body: "All raw materials, ingredients, packaging materials, and PET components undergo strict inspection procedures before entering the production process to maintain food safety and manufacturing consistency." },
+  { title: "Beverage Mixing & Formulation", body: "Sugar dissolving, powder blending, syrup preparation, and beverage formulation are controlled through standardized processing systems to ensure flavor consistency and product quality." },
+  { title: "UHT Sterilization & Processing", body: "Ultra-High Temperature (UHT) sterilization systems help ensure product safety, extended shelf life, and manufacturing stability while maintaining beverage taste and quality standards." },
+  { title: "Filling & Capping", body: "Quantum Leap utilizes integrated filling and capping systems designed for efficient and hygienic beverage production. Our automated systems support scalable production capacity with reduced operational contamination risks." },
+  { title: "Labeling & Packaging", body: "High-speed labeling systems apply customized labels and branding materials to finished products. Packaging options include shrink wrapping, carton packing, tray packing, and palletizing solutions." },
+  { title: "Quality Control & Inspection", body: "Strict quality control procedures are implemented throughout every production stage. Automated inspection systems and quality assurance teams monitor bottle integrity, filling accuracy, labeling quality, and packaging consistency." },
+  { title: "Storage & Warehouse Management", body: "Finished products are stored in controlled warehouse environments designed to support inventory management, product safety, and efficient distribution planning." },
+  { title: "Logistics & Distribution Support", body: "Quantum Leap supports local and export distribution requirements with scalable production planning and coordinated logistics support for OEM partners." },
 ];
 
 function OemManufacturing() {
