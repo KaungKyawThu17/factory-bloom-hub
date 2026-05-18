@@ -43,6 +43,7 @@ type Product = {
   name: string;
   image?: string;
   cta?: boolean;
+  badge?: string;
 };
 
 const packagingProducts: Product[] = [
@@ -59,7 +60,7 @@ const beverageProducts: Product[] = [
   { name: "Soft & Carbonated", image: bevSoftDrinkImg },
   { name: "Juice & Flavored", image: bevFlavoredImg },
   { name: "Tea & Functional", image: bevTeaImg },
-  { name: "Dairy & Soy Milk", image: bevDairyImg },
+  { name: "Dairy & Soy Milk", image: bevDairyImg, badge: "Coming Soon" },
 ];
 
 const coreValues = [
@@ -88,7 +89,7 @@ const coreValues = [
 function ProductCard({ product }: { product: Product }) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
-  const { name, image, cta } = product;
+  const { name, image, cta, badge } = product;
 
   useEffect(() => {
     if (imgRef.current?.complete) setLoaded(true);
@@ -135,6 +136,11 @@ function ProductCard({ product }: { product: Product }) {
           <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
             <Package className="h-10 w-10" />
           </div>
+        )}
+        {badge && (
+          <span className="absolute top-3 left-3 rounded-full bg-accent text-foreground text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 shadow-sm">
+            {badge}
+          </span>
         )}
       </div>
       <div className="p-4">
