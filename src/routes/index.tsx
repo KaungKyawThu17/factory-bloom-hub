@@ -192,26 +192,30 @@ function Home() {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 p-1.5 rounded-full bg-muted/60 w-fit mx-auto">
+        <div className="grid grid-cols-2 sm:flex sm:w-fit sm:mx-auto gap-1.5 p-1.5 mb-8 rounded-2xl sm:rounded-full bg-muted/60">
           <button
             onClick={() => setCategory("packaging")}
-            className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+            className={`inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-full px-4 sm:px-5 py-2.5 text-sm font-semibold transition ${
               category === "packaging" ? "bg-foreground text-background shadow-soft" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <Package className="h-4 w-4" />
-            Packaging
-            <span className="text-xs opacity-70">· {packagingProducts.length}</span>
+            <span>Packaging</span>
+            <span className={`text-xs rounded-full px-1.5 py-0.5 ${category === "packaging" ? "bg-background/15" : "bg-foreground/10"}`}>
+              {packagingProducts.length}
+            </span>
           </button>
           <button
             onClick={() => setCategory("beverage")}
-            className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+            className={`inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-full px-4 sm:px-5 py-2.5 text-sm font-semibold transition ${
               category === "beverage" ? "bg-foreground text-background shadow-soft" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <GlassWater className="h-4 w-4" />
-            Beverage OEM
-            <span className="text-xs opacity-70">· {beverageProducts.length}</span>
+            <span>Beverages</span>
+            <span className={`text-xs rounded-full px-1.5 py-0.5 ${category === "beverage" ? "bg-background/15" : "bg-foreground/10"}`}>
+              {beverageProducts.length}
+            </span>
           </button>
         </div>
 
