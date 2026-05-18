@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { PageHero } from "@/components/PageHero";
-import { Palette } from "lucide-react";
+import { ArrowRight, Palette } from "lucide-react";
 import plasticCapImg from "@/assets/pkg-plastic-cap.webp";
 import petBottleImg from "@/assets/pkg-pet-bottle.webp";
 import petPreformImg from "@/assets/pkg-pet-preform.webp";
