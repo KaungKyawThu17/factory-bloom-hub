@@ -83,9 +83,44 @@ function OemManufacturing() {
         </div>
       </section>
 
-      {/* S-CURVE JOURNEY */}
+      {/* MANUFACTURING TABS */}
       <section className="py-20 md:py-28 bg-muted/40 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          {/* Tab switcher */}
+          <div className="flex justify-center mb-12 md:mb-16">
+            <div role="tablist" className="inline-flex items-center gap-1 rounded-full border border-border bg-card p-1.5 shadow-sm">
+              <button
+                role="tab"
+                aria-selected={tab === "pet"}
+                onClick={() => setTab("pet")}
+                className={`inline-flex items-center gap-2 rounded-full px-5 md:px-7 py-2.5 text-sm md:text-base font-semibold transition ${
+                  tab === "pet"
+                    ? "bg-gradient-brand text-white shadow-glow"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Package className="h-4 w-4" />
+                PET Manufacturing
+              </button>
+              <button
+                role="tab"
+                aria-selected={tab === "can"}
+                onClick={() => setTab("can")}
+                className={`inline-flex items-center gap-2 rounded-full px-5 md:px-7 py-2.5 text-sm md:text-base font-semibold transition ${
+                  tab === "can"
+                    ? "bg-gradient-brand text-white shadow-glow"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Container className="h-4 w-4" />
+                Can Manufacturing
+                <span className={`ml-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${tab === "can" ? "bg-white/20 text-white" : "bg-accent/15 text-accent"}`}>Soon</span>
+              </button>
+            </div>
+          </div>
+
+          {tab === "pet" ? (
+            <>
           <div className="text-center mb-16 md:mb-20">
             <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">PET Manufacturing</div>
             <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Our 8-Step Process</h2>
