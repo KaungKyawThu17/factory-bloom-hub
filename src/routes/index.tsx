@@ -236,7 +236,7 @@ function Home() {
 
       {/* PRODUCT CATEGORIES */}
       <section className="py-24 mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-end mb-10">
           <div>
             <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Product Categories</div>
             <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight">Packaging and beverages under one roof.</h2>
@@ -246,82 +246,53 @@ function Home() {
           </p>
         </div>
 
-        {/* Tabs */}
-        <div className="grid grid-cols-2 sm:flex sm:w-fit sm:mx-auto gap-1.5 p-1.5 mb-8 rounded-2xl sm:rounded-full bg-muted/60">
-          <button
-            onClick={() => setCategory("packaging")}
-            className={`inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-full px-4 sm:px-5 py-2.5 text-sm font-semibold transition ${
-              category === "packaging" ? "bg-foreground text-background shadow-soft" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <Package className="h-4 w-4" />
-            <span>Packaging</span>
-            <span className={`text-xs rounded-full px-1.5 py-0.5 ${category === "packaging" ? "bg-background/15" : "bg-foreground/10"}`}>
-              {packagingProducts.length}
-            </span>
-          </button>
-          <button
-            onClick={() => setCategory("beverage")}
-            className={`inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-full px-4 sm:px-5 py-2.5 text-sm font-semibold transition ${
-              category === "beverage" ? "bg-foreground text-background shadow-soft" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <GlassWater className="h-4 w-4" />
-            <span>Beverages</span>
-            <span className={`text-xs rounded-full px-1.5 py-0.5 ${category === "beverage" ? "bg-background/15" : "bg-foreground/10"}`}>
-              {beverageProducts.length}
-            </span>
-          </button>
+        {/* Sticky segmented control */}
+        <div className="sticky top-16 z-20 -mx-4 px-4 lg:mx-0 lg:px-0 py-3 mb-6 bg-background/85 backdrop-blur-md">
+          <div className="mx-auto w-full sm:w-fit grid grid-cols-2 gap-1.5 p-1.5 rounded-2xl sm:rounded-full bg-muted/60 border border-border">
+            {([
+              { key: "packaging", label: "Packaging", sub: "Caps · Bottles · Labels", icon: Package, count: packagingProducts.length },
+              { key: "beverage", label: "Beverages", sub: "Energy · Soft · Tea · Dairy", icon: GlassWater, count: beverageProducts.length },
+            ] as const).map(({ key, label, sub, icon: Icon, count }) => {
+              const active = category === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setCategory(key)}
+                  className={`relative flex items-center justify-center gap-2.5 rounded-xl sm:rounded-full px-4 sm:px-6 py-2.5 text-left transition ${
+                    active ? "bg-foreground text-background shadow-soft" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <Icon className="h-4 w-4 shrink-0" />
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-sm font-semibold inline-flex items-center gap-1.5">
+                      {label}
+                      <span className={`text-[10px] rounded-full px-1.5 py-0.5 font-bold ${active ? "bg-background/20 text-background" : "bg-foreground/15 text-foreground"}`}>
+                        {count}
+                      </span>
+                    </span>
+                    <span className={`text-[10px] hidden sm:block ${active ? "text-background/70" : "text-muted-foreground/80"}`}>{sub}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="relative">
-          <div className={category === "packaging" ? "grid grid-cols-2 md:grid-cols-3 gap-4" : "hidden"}>
-            {packagingProducts.map(({ name, image }) => (
-              <Link
-                key={name}
-                to="/products"
-                className="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition"
-              >
-                <div className="relative h-44 w-full overflow-hidden bg-muted">
-                  {image ? (
-                    <img src={image} alt={name} loading="lazy" decoding="async" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  ) : (
-                    <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
-                      <Package className="h-10 w-10" />
-                    </div>
-                  )}
-                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
-                    <span className="font-display text-sm md:text-base font-semibold">{name}</span>
-                    <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className={category === "beverage" ? "grid grid-cols-2 md:grid-cols-3 gap-4" : "hidden"}>
-            {beverageProducts.map(({ name, image }) => (
-              <Link
-                key={name}
-                to="/products"
-                className="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition"
-              >
-                <div className="relative h-44 w-full overflow-hidden bg-muted">
-                  <img src={image} alt={name} loading="lazy" decoding="async" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white gap-2">
-                    <span className="font-display text-sm md:text-base font-semibold leading-tight">{name}</span>
-                    <ArrowRight className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition" />
-                  </div>
-                </div>
-              </Link>
+        {/* Cards: horizontal snap-carousel on mobile, grid w/ spotlight on desktop */}
+        <div className="relative animate-fade-in" key={category}>
+          <div className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 pb-4 md:pb-0 scrollbar-hide">
+            {(category === "packaging" ? packagingProducts : beverageProducts).map((p, idx) => (
+              <ProductCard key={p.name} product={p} featured={idx === 0} />
             ))}
           </div>
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link to="/products" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3.5 font-semibold hover:bg-primary transition">
             View all products <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 font-semibold text-foreground hover:bg-muted/60 transition">
+            Request a sample
           </Link>
         </div>
       </section>
