@@ -88,6 +88,89 @@ const coreValues = [
   },
 ];
 
+function ProductCard({ product, featured }: { product: Product; featured?: boolean }) {
+  const [loaded, setLoaded] = useState(false);
+  const { name, image, chip, desc, badge, cta } = product;
+
+  return (
+    <Link
+      to="/products"
+      className={`group relative shrink-0 snap-start w-[78%] sm:w-[55%] md:w-auto rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition-all ${
+        featured ? "md:col-span-2 md:row-span-1" : ""
+      }`}
+    >
+      <div className={`relative w-full overflow-hidden bg-muted ${featured ? "aspect-[16/10] md:aspect-[16/9]" : "aspect-[4/5] md:aspect-[4/5]"}`}>
+        {/* Skeleton */}
+        {!loaded && !cta && image && (
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted to-muted/40" />
+        )}
+
+        {cta ? (
+          <div className="absolute inset-0 bg-gradient-brand flex flex-col items-center justify-center text-white text-center px-6">
+            <Sparkles className="h-10 w-10 mb-3 opacity-90" />
+            <div className="font-display text-lg font-bold mb-1">Need something custom?</div>
+            <p className="text-sm text-white/85 leading-snug max-w-[14rem]">Bespoke bottles, caps & labels engineered to your brand.</p>
+          </div>
+        ) : image ? (
+          <img
+            src={image}
+            alt={name}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            className={`h-full w-full object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+          />
+        ) : (
+          <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
+            <Package className="h-10 w-10" />
+          </div>
+        )}
+
+        {/* Top badges */}
+        <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2 pointer-events-none">
+          {chip && (
+            <span className="rounded-full bg-white/90 backdrop-blur text-foreground text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 shadow-sm">
+              {chip}
+            </span>
+          )}
+          {badge && (
+            <span className={`rounded-full text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 shadow-sm ${
+              badge.toLowerCase().includes("coming") ? "bg-accent text-foreground" : "bg-primary text-white"
+            }`}>
+              {badge}
+            </span>
+          )}
+        </div>
+
+        {/* Bottom info */}
+        {!cta && (
+          <>
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <div className="flex items-center justify-between gap-2 mb-1">
+                <h3 className="font-display text-base md:text-lg font-bold leading-tight">{name}</h3>
+                <ArrowRight className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition" />
+              </div>
+              {desc && (
+                <p className="text-[11px] md:text-xs text-white/80 leading-snug max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-300 overflow-hidden">
+                  {desc}
+                </p>
+              )}
+            </div>
+          </>
+        )}
+        {cta && (
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white text-foreground text-xs font-semibold px-3.5 py-1.5">
+              Let's talk <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </div>
+        )}
+      </div>
+    </Link>
+  );
+}
+
 function Home() {
   const [category, setCategory] = useState<"packaging" | "beverage">("packaging");
   return (
