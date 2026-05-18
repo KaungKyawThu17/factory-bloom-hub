@@ -5,6 +5,16 @@ import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
   ArrowLeft, ArrowRight, Package, Container, Clock,
 } from "lucide-react";
+import step01 from "@/assets/oem-step-01-consultation.webp";
+import step02 from "@/assets/oem-step-02-preform.webp";
+import step03 from "@/assets/oem-step-03-blowing.webp";
+import step04 from "@/assets/oem-step-04-water.webp";
+import step05 from "@/assets/oem-step-05-rawmaterial.webp";
+import step06 from "@/assets/oem-step-06-mixing.webp";
+import step07 from "@/assets/oem-step-07-uht.webp";
+import step08 from "@/assets/oem-step-08-filling.webp";
+import step09 from "@/assets/oem-step-09-labelling.webp";
+import step10 from "@/assets/oem-step-10-quality.webp";
 
 export const Route = createFileRoute("/services/oem-manufacturing")({
   head: () => ({ meta: [
