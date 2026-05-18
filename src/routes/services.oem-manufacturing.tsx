@@ -256,7 +256,7 @@ function OemManufacturing() {
             <div className="grid md:grid-cols-2 items-center relative z-10">
               <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[340px] overflow-hidden">
                 <img src={welcomeImg} alt="Quantum Leap team welcome" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[oklch(0.22_0.09_245)]/80 via-[oklch(0.22_0.09_245)]/30 to-transparent md:from-transparent md:via-[oklch(0.22_0.09_245)]/40 md:to-[oklch(0.22_0.09_245)]" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary/70 via-primary/20 to-transparent md:from-transparent md:via-primary/10 md:to-primary/40" />
               </div>
               <div className="p-10 md:p-14 text-center md:text-left">
               <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">Ready to discuss your project?</h3>
