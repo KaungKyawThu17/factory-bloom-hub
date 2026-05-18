@@ -89,7 +89,7 @@ const coreValues = [
 function ProductCard({ product }: { product: Product }) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
-  const { name, image, cta } = product;
+  const { name, image, cta, badge } = product;
 
   useEffect(() => {
     if (imgRef.current?.complete) setLoaded(true);
