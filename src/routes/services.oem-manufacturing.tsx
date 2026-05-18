@@ -3,17 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
-  ArrowLeft, ArrowRight, MessagesSquare, FlaskConical, TestTube2, Package,
-  Calculator, BadgeCheck, Factory, Truck, Container, Clock,
+  ArrowLeft, ArrowRight, Package, Container, Clock,
 } from "lucide-react";
-import clientMeetingImg from "@/assets/client-meeting.webp";
-import researchFormulaImg from "@/assets/oem-research-formula.webp";
-import productTestingImg from "@/assets/oem-product-testing.webp";
-import packagingBottleImg from "@/assets/oem-packaging-bottle.webp";
-import costingQuotationImg from "@/assets/oem-costing-quotation.webp";
-import regulatoryImg from "@/assets/oem-regulatory.webp";
-import massProductionImg from "@/assets/oem-mass-production.webp";
-import packagingDeliveryImg from "@/assets/oem-packaging-delivery.webp";
 
 export const Route = createFileRoute("/services/oem-manufacturing")({
   head: () => ({ meta: [
@@ -24,14 +15,18 @@ export const Route = createFileRoute("/services/oem-manufacturing")({
 });
 
 const steps = [
-  { icon: MessagesSquare, title: "Consultation & Requirement Discussion", body: "Understanding the client's product concept, target market, packaging needs, and production requirements.", image: clientMeetingImg },
-  { icon: FlaskConical,   title: "Research & Formula Development",        body: "Developing customized beverage formulas and product samples based on the client's preferences.", image: researchFormulaImg },
-  { icon: TestTube2,      title: "Sampling & Product Testing",            body: "Conducting taste tests, quality checks, and product stability evaluations before approval.", image: productTestingImg },
-  { icon: Package,        title: "Packaging & Bottle Development",        body: "Designing or developing PET bottles, labels, caps, and carton packaging solutions.", image: packagingBottleImg },
-  { icon: Calculator,     title: "Costing & Quotation",                   body: "Preparing production costing, MOQ, timeline, and commercial proposal for client approval.", image: costingQuotationImg },
-  { icon: BadgeCheck,     title: "Regulatory & Certification Support",    body: "Supporting product registration, FDA compliance, Halal certification, and documentation processes.", image: regulatoryImg },
-  { icon: Factory,        title: "Mass Production",                       body: "Executing large-scale production with controlled manufacturing and quality assurance procedures.", image: massProductionImg },
-  { icon: Truck,          title: "Packaging & Delivery",                  body: "Packing finished products and arranging delivery or export shipment to the client.", image: packagingDeliveryImg },
+  { title: "Product Consultation & Packaging Development", body: "We begin by understanding the customer's beverage category, target market, packaging requirements, bottle size, and branding objectives. Our team supports bottle design discussions, packaging structure planning, and production feasibility evaluation." },
+  { title: "PET Preform Preparation", body: "Food-grade PET preforms are prepared according to required bottle specifications including neck finish, bottle volume, and product compatibility to ensure consistent packaging quality and structural integrity." },
+  { title: "Bottle Blowing Process", body: "Using high-speed blowing systems, PET preforms are heated and stretch-blown into customized bottle shapes. This process ensures lightweight, durable, and high-quality beverage packaging suitable for multiple beverage categories." },
+  { title: "Water Treatment System", body: "Our water treatment systems utilize advanced purification technologies including multi-stage filtration, activated carbon treatment, and reverse osmosis systems to ensure product safety and beverage quality." },
+  { title: "Raw Material Inspection", body: "All raw materials, ingredients, packaging materials, and PET components undergo strict inspection procedures before entering the production process to maintain food safety and manufacturing consistency." },
+  { title: "Beverage Mixing & Formulation", body: "Sugar dissolving, powder blending, syrup preparation, and beverage formulation are controlled through standardized processing systems to ensure flavor consistency and product quality." },
+  { title: "UHT Sterilization & Processing", body: "Ultra-High Temperature (UHT) sterilization systems help ensure product safety, extended shelf life, and manufacturing stability while maintaining beverage taste and quality standards." },
+  { title: "Filling & Capping", body: "Quantum Leap utilizes integrated filling and capping systems designed for efficient and hygienic beverage production. Our automated systems support scalable production capacity with reduced operational contamination risks." },
+  { title: "Labeling & Packaging", body: "High-speed labeling systems apply customized labels and branding materials to finished products. Packaging options include shrink wrapping, carton packing, tray packing, and palletizing solutions." },
+  { title: "Quality Control & Inspection", body: "Strict quality control procedures are implemented throughout every production stage. Automated inspection systems and quality assurance teams monitor bottle integrity, filling accuracy, labeling quality, and packaging consistency." },
+  { title: "Storage & Warehouse Management", body: "Finished products are stored in controlled warehouse environments designed to support inventory management, product safety, and efficient distribution planning." },
+  { title: "Logistics & Distribution Support", body: "Quantum Leap supports local and export distribution requirements with scalable production planning and coordinated logistics support for OEM partners." },
 ];
 
 function OemManufacturing() {
@@ -123,7 +118,7 @@ function OemManufacturing() {
             <>
           <div className="text-center mb-16 md:mb-20">
             <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">PET Manufacturing</div>
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Our 8-Step Process</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Our 12-Step Process</h2>
             <p className="text-muted-foreground mt-4 max-w-xl mx-auto">A streamlined path from vision to shelf — engineered for quality at every stage.</p>
           </div>
 
@@ -131,7 +126,7 @@ function OemManufacturing() {
             {/* S-curve SVG path (desktop) */}
             <svg
               className="hidden md:block absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 1000 1800"
+              viewBox="0 0 1000 2600"
               preserveAspectRatio="none"
               aria-hidden="true"
             >
@@ -147,7 +142,9 @@ function OemManufacturing() {
                    C 200 540, 200 740, 500 840
                    C 800 940, 800 1140, 500 1240
                    C 200 1340, 200 1540, 500 1640
-                   L 500 1760"
+                   C 800 1740, 800 1940, 500 2040
+                   C 200 2140, 200 2340, 500 2440
+                   L 500 2560"
                 fill="none"
                 stroke="url(#oemPath)"
                 strokeWidth="3"
@@ -185,17 +182,6 @@ function OemManufacturing() {
 
                     <div className={`md:w-1/2 mt-4 md:mt-0 ${isLeft ? "md:pl-16" : "md:pr-16"}`}>
                       <div className={`group bg-card rounded-2xl border border-border shadow-sm hover:shadow-glow hover:border-primary/30 transition-all overflow-hidden ${isLeft ? "" : "md:text-right"}`}>
-                        {step.image && (
-                          <div className="relative h-48 w-full overflow-hidden">
-                            <img
-                              src={step.image}
-                              alt={step.title}
-                              className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
-                          </div>
-                        )}
                         <div className="p-6 md:p-8">
                           <h3 className="font-display text-xl font-bold text-foreground mb-2">{step.title}</h3>
                           <p className="text-muted-foreground text-sm leading-relaxed">{step.body}</p>
