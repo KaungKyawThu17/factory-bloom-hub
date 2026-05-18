@@ -14,7 +14,7 @@ import bevSoftDrinkImg from "@/assets/bev-soft-drink.webp";
 import bevFlavoredImg from "@/assets/bev-flavored.webp";
 import bevTeaImg from "@/assets/bev-tea.webp";
 import bevDairyImg from "@/assets/bev-dairy.webp";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Factory, Beaker, ShieldCheck, Gauge, Boxes, Award,
   Milk, ArrowRight, CheckCircle2, Heart, Leaf, Globe, Lightbulb, Package, GlassWater, Sparkles
@@ -86,8 +86,13 @@ const coreValues = [
 ];
 
 function ProductCard({ product }: { product: Product }) {
+  const imgRef = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
   const { name, image, cta } = product;
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true);
+  }, [image]);
 
   if (cta) {
     return (
@@ -118,12 +123,13 @@ function ProductCard({ product }: { product: Product }) {
         )}
         {image ? (
           <img
+            ref={imgRef}
             src={image}
             alt={name}
             loading="lazy"
             decoding="async"
             onLoad={() => setLoaded(true)}
-            className={`h-full w-full object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
