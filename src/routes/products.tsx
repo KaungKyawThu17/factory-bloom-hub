@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { PageHero } from "@/components/PageHero";
-import { Milk } from "lucide-react";
 import plasticCapImg from "@/assets/pkg-plastic-cap.webp";
 import petBottleImg from "@/assets/pkg-pet-bottle.webp";
 import petPreformImg from "@/assets/pkg-pet-preform.webp";
@@ -11,6 +10,9 @@ import prodElectrolyteImg from "@/assets/prod-electrolyte.webp";
 import prodFlavoredImg from "@/assets/prod-flavored.webp";
 import prodSoftDrinkImg from "@/assets/prod-soft-drink.webp";
 import prodTeaImg from "@/assets/prod-tea.webp";
+import prodFruitJuiceImg from "@/assets/prod-fruit-juice.webp";
+import prodEnergyImg from "@/assets/prod-energy.webp";
+import prodDairyImg from "@/assets/prod-dairy.webp";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -23,16 +25,16 @@ export const Route = createFileRoute("/products")({
 });
 
 const products = [
-  { name: "Energy Drinks", image: undefined, desc: "Manufacturing solutions for high-performance energy beverages with customizable formulations, flavors, and packaging formats." },
+  { name: "Energy Drinks", image: prodEnergyImg, desc: "Manufacturing solutions for high-performance energy beverages with customizable formulations, flavors, and packaging formats." },
   { name: "Soft Drinks", image: prodSoftDrinkImg, desc: "Carbonated and non-carbonated beverage production tailored for local and export market requirements." },
-  { name: "Fruit Juices", image: undefined, desc: "Production of fruit juice beverages including orange, pineapple, cantaloupe, lychee, and customized formulations." },
+  { name: "Fruit Juices", image: prodFruitJuiceImg, desc: "Production of fruit juice beverages including orange, pineapple, cantaloupe, lychee, and customized formulations." },
   { name: "Electrolyte Beverages", image: prodElectrolyteImg, desc: "Functional hydration beverages manufactured with consistent quality and advanced processing systems." },
   { name: "Flavored Drinks", image: prodFlavoredImg, desc: "Innovative flavored beverages with nata de coco and fruit-based variations designed for evolving consumer preferences." },
   { name: "Tea & Functional", image: prodTeaImg, desc: "Tea-based and functional beverages for everyday wellness and performance." },
 ];
 
 const upcoming = [
-  { icon: Milk, name: "Dairy Products", desc: "Soy milk and dairy products." },
+  { image: prodDairyImg, name: "Dairy Products", desc: "Soy milk and dairy products." },
 ];
 
 const packagingProducts = [
