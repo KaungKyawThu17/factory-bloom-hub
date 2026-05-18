@@ -118,7 +118,7 @@ function OemManufacturing() {
             <>
           <div className="text-center mb-16 md:mb-20">
             <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">PET Manufacturing</div>
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Our 8-Step Process</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Our 12-Step Process</h2>
             <p className="text-muted-foreground mt-4 max-w-xl mx-auto">A streamlined path from vision to shelf — engineered for quality at every stage.</p>
           </div>
 
