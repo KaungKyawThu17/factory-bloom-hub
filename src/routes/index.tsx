@@ -14,7 +14,7 @@ import bevSoftDrinkImg from "@/assets/bev-soft-drink.webp";
 import bevFlavoredImg from "@/assets/bev-flavored.webp";
 import bevTeaImg from "@/assets/bev-tea.webp";
 import bevDairyImg from "@/assets/bev-dairy.webp";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Factory, Beaker, ShieldCheck, Gauge, Boxes, Award,
   Milk, ArrowRight, CheckCircle2, Heart, Leaf, Globe, Lightbulb, Package, GlassWater, Sparkles
