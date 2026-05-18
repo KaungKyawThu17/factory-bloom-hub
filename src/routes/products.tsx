@@ -104,9 +104,19 @@ function Products() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packagingProducts.map(({ title, items, image }) => (
             <article key={title} className="group rounded-3xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition">
-              {image && (
+              {image ? (
                 <div className="relative h-48 w-full overflow-hidden bg-muted">
                   <img src={image} alt={title} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              ) : (
+                <div className="relative h-48 w-full overflow-hidden bg-gradient-brand flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+                  <div className="relative z-10 flex flex-col items-center gap-3">
+                    <div className="h-16 w-16 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20 group-hover:scale-110 transition-transform duration-300">
+                      <Palette className="h-8 w-8 text-white" />
+                    </div>
+                    <span className="text-white/90 text-sm font-semibold tracking-wide">Tailored Solutions</span>
+                  </div>
                 </div>
               )}
               <div className="p-8">
