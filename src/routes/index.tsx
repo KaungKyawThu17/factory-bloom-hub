@@ -86,6 +86,7 @@ const coreValues = [
 ];
 
 function ProductCard({ product }: { product: Product }) {
+  const [loaded, setLoaded] = useState(false);
   const { name, image, cta } = product;
 
   if (cta) {
@@ -112,13 +113,17 @@ function ProductCard({ product }: { product: Product }) {
       className="group shrink-0 snap-start w-[78%] sm:w-[55%] md:w-auto rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition-all"
     >
       <div className="relative w-full aspect-[4/5] md:aspect-[4/5] overflow-hidden bg-muted">
+        {!loaded && image && (
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted to-muted/40" />
+        )}
         {image ? (
           <img
             src={image}
             alt={name}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onLoad={() => setLoaded(true)}
+            className={`h-full w-full object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
