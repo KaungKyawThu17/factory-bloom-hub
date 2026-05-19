@@ -88,13 +88,7 @@ const coreValues = [
 ];
 
 function ProductCard({ product }: { product: Product }) {
-  const imgRef = useRef<HTMLImageElement>(null);
-  const [loaded, setLoaded] = useState(false);
   const { name, image, cta, badge } = product;
-
-  useEffect(() => {
-    if (imgRef.current?.complete) setLoaded(true);
-  }, [image]);
 
   if (cta) {
     return (
@@ -120,18 +114,13 @@ function ProductCard({ product }: { product: Product }) {
       className="group shrink-0 snap-start w-[78%] sm:w-[55%] md:w-auto rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-glow transition-all"
     >
       <div className="relative w-full aspect-[4/5] md:aspect-[4/5] overflow-hidden bg-muted">
-        {!loaded && image && (
-          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted to-muted/40" />
-        )}
         {image ? (
           <img
-            ref={imgRef}
             src={image}
             alt={name}
             loading="lazy"
             decoding="async"
-            onLoad={() => setLoaded(true)}
-            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center bg-gradient-brand text-white">
@@ -150,6 +139,7 @@ function ProductCard({ product }: { product: Product }) {
     </Link>
   );
 }
+
 
 function Home() {
   const [category, setCategory] = useState<"packaging" | "beverage">("packaging");
