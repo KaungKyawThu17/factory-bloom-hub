@@ -8,9 +8,9 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo} alt="QUANTUM LEAP" className="h-14 w-14 object-contain" />
+          <img src={logo} alt="QUANTUM LEAP" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
           <div className="leading-tight">
             <div className="font-display text-lg font-bold tracking-tight">QUANTUM LEAP</div>
             <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Beverage Mfg.</div>
