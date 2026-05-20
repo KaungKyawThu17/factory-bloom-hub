@@ -4,7 +4,7 @@ import welcomeImg from "@/assets/welcome.webp";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
   ArrowLeft, ArrowRight, Wind, Droplets, Tag, PackageOpen, Snowflake, Zap,
-  Fuel, Gauge, Warehouse, Building2, MapPin, Ruler,
+  Fuel, Gauge, Warehouse, Building2, MapPin, Ruler, Recycle,
 } from "lucide-react";
 
 export const Route = createFileRoute("/services/factory-facilities")({
