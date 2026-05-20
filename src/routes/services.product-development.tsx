@@ -183,7 +183,7 @@ function ProductDevelopment() {
               <div className="absolute inset-0 bg-gradient-glow opacity-60" />
               <div className="relative w-full p-10 md:p-16 text-center md:text-left max-w-2xl">
               <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">Got a packaging or format challenge?</h3>
-              <p className="text-white/80 mb-10 text-lg max-w-xl mx-auto">From PET to aseptic cartons — let's pick the right format for your launch.</p>
+              <p className="text-white/80 mb-10 text-lg max-w-xl mx-auto">From PET bottles to aseptic cartons — let's pick the right format for your launch.</p>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 font-bold text-lg transition group"
