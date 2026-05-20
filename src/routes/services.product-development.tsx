@@ -128,7 +128,7 @@ function ProductDevelopment() {
           <div className="lg:col-span-3">
             <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Packaging Types</div>
             <h2 className="font-display text-3xl md:text-4xl font-extrabold text-foreground mb-8">
-              Three formats, infinite possibilities
+              Two formats, infinite possibilities
             </h2>
             <div className="space-y-4">
               {packagingTypes.map((t) => (
