@@ -3,7 +3,7 @@ import { Layout } from "@/components/Layout";
 import welcomeImg from "@/assets/welcome.webp";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
-  ArrowLeft, ArrowRight, Droplets, Layers, PackageOpen, Thermometer, Sparkles, Gauge, Clock, Factory,
+  ArrowLeft, ArrowRight, Droplets, Layers, PackageOpen, Thermometer, Sparkles, Package, Gauge, Clock, Factory,
 } from "lucide-react";
 
 export const Route = createFileRoute("/services/production-capabilities")({
@@ -57,19 +57,29 @@ const lines = [
   },
   {
     icon: Sparkles,
-    name: "CSD & Canning Line",
+    name: "CSD",
     tag: "Coming Soon",
     capacity: "Soon",
     unit: "expansion phase",
-    body: "Expansion into high-speed carbonated soft drink and canning systems for large-scale beverage production.",
-    highlights: ["Carbonation", "Aluminum cans", "High-speed"],
+    body: "Expansion into high-speed carbonated soft drink systems for large-scale beverage production.",
+    highlights: ["Carbonation", "Multiple flavors", "High-speed"],
     status: "soon",
+  },
+  {
+    icon: Package,
+    name: "Canning Line",
+    tag: "Future Plan",
+    capacity: "Future",
+    unit: "planning phase",
+    body: "Future aluminum canning line to complement our bottling and pouch capabilities for complete packaging flexibility.",
+    highlights: ["Aluminum cans", "Multi-format", "Complete range"],
+    status: "future",
   },
 ];
 
 const stats = [
   { icon: Gauge, value: "24,000", label: "Max bottles per hour", suffix: "BPH" },
-  { icon: Factory, value: "5", label: "Production lines", suffix: "Lines" },
+  { icon: Factory, value: "6", label: "Production lines", suffix: "Lines" },
   { icon: Clock, value: "24/7", label: "Operational capacity", suffix: "Uptime" },
 ];
 
@@ -153,6 +163,7 @@ function ProductionCapabilities() {
             {lines.map((line, i) => {
               const Icon = line.icon;
               const isSoon = line.status === "soon";
+              const isFuture = line.status === "future";
               return (
                 <div
                   key={line.name}
@@ -162,10 +173,10 @@ function ProductionCapabilities() {
                   <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl group-hover:bg-accent/20 transition" />
 
                   <div className="relative flex items-start justify-between mb-6">
-                    <div className={`inline-flex items-center justify-center h-14 w-14 rounded-2xl ${isSoon ? "bg-muted text-muted-foreground" : "bg-gradient-brand text-white"} group-hover:scale-110 transition-transform`}>
+                    <div className={`inline-flex items-center justify-center h-14 w-14 rounded-2xl ${isSoon ? "bg-accent/10 text-accent" : isFuture ? "bg-muted text-muted-foreground" : "bg-gradient-brand text-white"} group-hover:scale-110 transition-transform`}>
                       <Icon className="h-7 w-7" />
                     </div>
-                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full ${isSoon ? "bg-accent/15 text-accent" : "bg-primary/10 text-primary"}`}>
+                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full ${isSoon ? "bg-accent/15 text-accent" : isFuture ? "bg-muted text-muted-foreground" : "bg-primary/10 text-primary"}`}>
                       {line.tag}
                     </span>
                   </div>
