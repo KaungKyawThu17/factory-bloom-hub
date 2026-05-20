@@ -71,15 +71,14 @@ export function SiteHeader() {
             onMouseEnter={openMenu}
             onMouseLeave={scheduleClose}
           >
-            <Link
-              to="/services"
-              activeProps={{ className: "!text-primary" }}
+            <button
+              type="button"
+              onClick={() => setServicesOpen((v) => !v)}
               className="relative inline-flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-foreground/75 hover:text-foreground rounded-md transition-colors"
-              onClick={() => setServicesOpen(false)}
             >
               Services
               <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
-            </Link>
+            </button>
             {servicesOpen && (
               <div
                 className="absolute left-0 top-full pt-2 w-64"
@@ -136,7 +135,7 @@ export function SiteHeader() {
             </button>
             {mobileServicesOpen && (
               <div className="ml-3 flex flex-col border-l border-border pl-3 gap-0.5">
-                <Link to="/services" onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "text-primary" }} className="px-3 py-2 rounded-md text-sm text-foreground/80 hover:bg-muted">All Services</Link>
+                
                 {serviceLinks.map((s) => (
                   <Link key={s.to} to={s.to} onClick={() => setOpen(false)} activeProps={{ className: "text-primary" }} className="px-3 py-2 rounded-md text-sm text-foreground/80 hover:bg-muted">{s.label}</Link>
                 ))}
