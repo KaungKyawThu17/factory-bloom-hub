@@ -28,16 +28,16 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-xl shadow-soft">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 md:px-6 lg:px-8 h-24 md:h-32">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/55">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 md:px-8 lg:px-10 h-20 md:h-24">
         <Link to="/" className="flex items-center gap-3 group shrink-0">
           <img
             src={logo}
             alt="QUANTUM LEAP"
-            className="object-contain h-20 w-20 md:h-28 md:w-28 drop-shadow-sm transition-transform group-hover:scale-105"
+            className="object-contain h-16 w-16 md:h-20 md:w-20 drop-shadow-sm transition-transform group-hover:scale-105"
           />
           <div className="leading-tight">
-            <div className="font-display font-bold tracking-tight text-lg md:text-xl">
+            <div className="font-display font-bold tracking-tight text-base md:text-lg">
               QUANTUM LEAP
             </div>
             <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Beverage Mfg.</div>
