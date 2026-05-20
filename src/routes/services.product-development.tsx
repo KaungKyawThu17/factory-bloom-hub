@@ -3,46 +3,45 @@ import { Layout } from "@/components/Layout";
 import welcomeImg from "@/assets/welcome.webp";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
-  ArrowLeft, ArrowRight, Package, Boxes, Ruler, ShieldCheck, Globe2, Sparkles,
+  ArrowLeft, ArrowRight, Package, Boxes, Ruler, ShieldCheck, Beaker, Sparkles,
 } from "lucide-react";
 
 export const Route = createFileRoute("/services/product-development")({
   head: () => ({ meta: [
     { title: "Product Development — QUANTUM LEAP" },
-    { name: "description", content: "Packaging solutions, formats, quality assurance, and export support for your beverage brand." },
+    { name: "description", content: "Formulation, packaging solutions, formats, and quality assurance for your beverage brand." },
   ]}),
   component: ProductDevelopment,
 });
 
 const packagingTypes = [
   { code: "PET", title: "PET Bottles", body: "Lightweight, shatterproof, recyclable — ideal for water, juices, and functional drinks." },
-  { code: "TR",  title: "TR Packaging", body: "Versatile carton-based packaging for shelf-stable beverages." },
   { code: "TBA", title: "TBA Packaging", body: "Aseptic Tetra Brik packaging for long shelf-life dairy and plant-based drinks." },
 ];
 
 const formats = [
+  { type: "PET", size: "190 ml" },
   { type: "PET", size: "250 ml" },
   { type: "PET", size: "320 ml" },
   { type: "PET", size: "500 ml" },
-  { type: "TR",  size: "Multiple sizes" },
   { type: "TBA", size: "Multiple sizes" },
 ];
 
 const pillars = [
   {
-    icon: Package, eyebrow: "01 — Packaging",
+    icon: Beaker, eyebrow: "01 — Formulation",
+    title: "Formulation",
+    body: "Custom beverage formulation tailored to your brand — from recipe development and ingredient sourcing to taste profiling and shelf-life testing.",
+  },
+  {
+    icon: Package, eyebrow: "02 — Packaging",
     title: "Packaging Solutions",
     body: "Flexible packaging support including PET bottles, standing pouches, and future glass bottle manufacturing — engineered for shelf appeal and supply-chain efficiency.",
   },
   {
-    icon: ShieldCheck, eyebrow: "02 — Quality",
+    icon: ShieldCheck, eyebrow: "03 — Quality",
     title: "Quality Assurance",
     body: "Strict quality control procedures supported by FDA compliance, Halal certification, and internationally recognized food safety standards.",
-  },
-  {
-    icon: Globe2, eyebrow: "03 — Export",
-    title: "Export Support",
-    body: "Operational support for local and international distribution requirements, including scalable production planning for emerging and established markets.",
   },
 ];
 
