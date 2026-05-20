@@ -3,46 +3,45 @@ import { Layout } from "@/components/Layout";
 import welcomeImg from "@/assets/welcome.webp";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
-  ArrowLeft, ArrowRight, Package, Boxes, Ruler, ShieldCheck, Globe2, Sparkles,
+  ArrowLeft, ArrowRight, Package, Boxes, Ruler, ShieldCheck, Beaker, Sparkles,
 } from "lucide-react";
 
 export const Route = createFileRoute("/services/product-development")({
   head: () => ({ meta: [
     { title: "Product Development — QUANTUM LEAP" },
-    { name: "description", content: "Packaging solutions, formats, quality assurance, and export support for your beverage brand." },
+    { name: "description", content: "Formulation, packaging solutions, formats, and quality assurance for your beverage brand." },
   ]}),
   component: ProductDevelopment,
 });
 
 const packagingTypes = [
   { code: "PET", title: "PET Bottles", body: "Lightweight, shatterproof, recyclable — ideal for water, juices, and functional drinks." },
-  { code: "TR",  title: "TR Packaging", body: "Versatile carton-based packaging for shelf-stable beverages." },
   { code: "TBA", title: "TBA Packaging", body: "Aseptic Tetra Brik packaging for long shelf-life dairy and plant-based drinks." },
 ];
 
 const formats = [
+  { type: "PET", size: "190 ml" },
   { type: "PET", size: "250 ml" },
   { type: "PET", size: "320 ml" },
   { type: "PET", size: "500 ml" },
-  { type: "TR",  size: "Multiple sizes" },
   { type: "TBA", size: "Multiple sizes" },
 ];
 
 const pillars = [
   {
-    icon: Package, eyebrow: "01 — Packaging",
+    icon: Beaker, eyebrow: "01 — Formulation",
+    title: "Formulation",
+    body: "Custom beverage formulation tailored to your brand — from recipe development and ingredient sourcing to taste profiling and shelf-life testing.",
+  },
+  {
+    icon: Package, eyebrow: "02 — Packaging",
     title: "Packaging Solutions",
     body: "Flexible packaging support including PET bottles, standing pouches, and future glass bottle manufacturing — engineered for shelf appeal and supply-chain efficiency.",
   },
   {
-    icon: ShieldCheck, eyebrow: "02 — Quality",
+    icon: ShieldCheck, eyebrow: "03 — Quality",
     title: "Quality Assurance",
     body: "Strict quality control procedures supported by FDA compliance, Halal certification, and internationally recognized food safety standards.",
-  },
-  {
-    icon: Globe2, eyebrow: "03 — Export",
-    title: "Export Support",
-    body: "Operational support for local and international distribution requirements, including scalable production planning for emerging and established markets.",
   },
 ];
 
@@ -69,7 +68,7 @@ function ProductDevelopment() {
             Product <span className="bg-gradient-to-r from-accent to-cyan-200 bg-clip-text text-transparent">Development</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
-            From packaging design to export-ready quality assurance — built for brands that want to ship fast and scale globally.
+            From custom formulation to packaging-ready quality assurance — built for brands that want to innovate fast and scale with confidence.
           </p>
         </div>
       </section>
@@ -79,16 +78,16 @@ function ProductDevelopment() {
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight">
-              Packaging, formats, and quality — all under one roof.
+              Formulation, packaging, and quality — all under one roof.
             </h2>
             <div className="w-20 h-1.5 bg-accent mt-6 rounded-full" />
           </div>
           <div className="lg:col-span-7 space-y-6 text-muted-foreground text-lg leading-relaxed">
             <p>
-              QUANTUM LEAP supports your brand from initial packaging concept to finished, export-ready product — combining flexible formats with rigorous quality assurance and global distribution support.
+              QUANTUM LEAP supports your brand from initial formulation concept to finished, shelf-ready product — combining custom recipes with flexible packaging and rigorous quality assurance.
             </p>
             <p>
-              Whether you launch with PET bottles, standing pouches, or aseptic cartons, our team helps you select the right format, size, and certification path for your market.
+              Whether you launch with PET bottles or aseptic cartons, our team helps you develop the right formulation, select the right format, and secure the certifications your market demands.
             </p>
           </div>
         </div>
@@ -99,7 +98,7 @@ function ProductDevelopment() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center mb-14 md:mb-16">
             <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Three Pillars</div>
-            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Built for shelf, scale, and export</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-extrabold text-foreground">Built for formulation, packaging, and quality</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {pillars.map((p) => {
@@ -129,7 +128,7 @@ function ProductDevelopment() {
           <div className="lg:col-span-3">
             <div className="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Packaging Types</div>
             <h2 className="font-display text-3xl md:text-4xl font-extrabold text-foreground mb-8">
-              Three formats, infinite possibilities
+              Two formats, infinite possibilities
             </h2>
             <div className="space-y-4">
               {packagingTypes.map((t) => (
@@ -184,7 +183,7 @@ function ProductDevelopment() {
               <div className="absolute inset-0 bg-gradient-glow opacity-60" />
               <div className="relative w-full p-10 md:p-16 text-center md:text-left max-w-2xl">
               <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">Got a packaging or format challenge?</h3>
-              <p className="text-white/80 mb-10 text-lg max-w-xl mx-auto">From PET to aseptic cartons — let's pick the right format for your launch.</p>
+              <p className="text-white/80 mb-10 text-lg max-w-xl mx-auto">From PET bottles to aseptic cartons — let's pick the right format for your launch.</p>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 font-bold text-lg transition group"
