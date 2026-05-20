@@ -9,24 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as ServicesProductionCapabilitiesRouteImport } from './routes/services.production-capabilities'
-import { Route as ServicesProductDevelopmentRouteImport } from './routes/services.product-development'
-import { Route as ServicesOemManufacturingRouteImport } from './routes/services.oem-manufacturing'
-import { Route as ServicesOdmSolutionsRouteImport } from './routes/services.odm-solutions'
-import { Route as ServicesFactoryFacilitiesRouteImport } from './routes/services.factory-facilities'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -52,40 +40,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesIndexRoute = ServicesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesProductionCapabilitiesRoute =
-  ServicesProductionCapabilitiesRouteImport.update({
-    id: '/production-capabilities',
-    path: '/production-capabilities',
-    getParentRoute: () => ServicesRoute,
-  } as any)
-const ServicesProductDevelopmentRoute =
-  ServicesProductDevelopmentRouteImport.update({
-    id: '/product-development',
-    path: '/product-development',
-    getParentRoute: () => ServicesRoute,
-  } as any)
-const ServicesOemManufacturingRoute =
-  ServicesOemManufacturingRouteImport.update({
-    id: '/oem-manufacturing',
-    path: '/oem-manufacturing',
-    getParentRoute: () => ServicesRoute,
-  } as any)
-const ServicesOdmSolutionsRoute = ServicesOdmSolutionsRouteImport.update({
-  id: '/odm-solutions',
-  path: '/odm-solutions',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesFactoryFacilitiesRoute =
-  ServicesFactoryFacilitiesRouteImport.update({
-    id: '/factory-facilities',
-    path: '/factory-facilities',
-    getParentRoute: () => ServicesRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -93,13 +47,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/products': typeof ProductsRoute
-  '/services': typeof ServicesRouteWithChildren
-  '/services/factory-facilities': typeof ServicesFactoryFacilitiesRoute
-  '/services/odm-solutions': typeof ServicesOdmSolutionsRoute
-  '/services/oem-manufacturing': typeof ServicesOemManufacturingRoute
-  '/services/product-development': typeof ServicesProductDevelopmentRoute
-  '/services/production-capabilities': typeof ServicesProductionCapabilitiesRoute
-  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,12 +54,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/products': typeof ProductsRoute
-  '/services/factory-facilities': typeof ServicesFactoryFacilitiesRoute
-  '/services/odm-solutions': typeof ServicesOdmSolutionsRoute
-  '/services/oem-manufacturing': typeof ServicesOemManufacturingRoute
-  '/services/product-development': typeof ServicesProductDevelopmentRoute
-  '/services/production-capabilities': typeof ServicesProductionCapabilitiesRoute
-  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -121,56 +62,13 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/products': typeof ProductsRoute
-  '/services': typeof ServicesRouteWithChildren
-  '/services/factory-facilities': typeof ServicesFactoryFacilitiesRoute
-  '/services/odm-solutions': typeof ServicesOdmSolutionsRoute
-  '/services/oem-manufacturing': typeof ServicesOemManufacturingRoute
-  '/services/product-development': typeof ServicesProductDevelopmentRoute
-  '/services/production-capabilities': typeof ServicesProductionCapabilitiesRoute
-  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/faq'
-    | '/products'
-    | '/services'
-    | '/services/factory-facilities'
-    | '/services/odm-solutions'
-    | '/services/oem-manufacturing'
-    | '/services/product-development'
-    | '/services/production-capabilities'
-    | '/services/'
+  fullPaths: '/' | '/about' | '/contact' | '/faq' | '/products'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/faq'
-    | '/products'
-    | '/services/factory-facilities'
-    | '/services/odm-solutions'
-    | '/services/oem-manufacturing'
-    | '/services/product-development'
-    | '/services/production-capabilities'
-    | '/services'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/faq'
-    | '/products'
-    | '/services'
-    | '/services/factory-facilities'
-    | '/services/odm-solutions'
-    | '/services/oem-manufacturing'
-    | '/services/product-development'
-    | '/services/production-capabilities'
-    | '/services/'
+  to: '/' | '/about' | '/contact' | '/faq' | '/products'
+  id: '__root__' | '/' | '/about' | '/contact' | '/faq' | '/products'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -179,18 +77,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   ProductsRoute: typeof ProductsRoute
-  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -226,72 +116,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/': {
-      id: '/services/'
-      path: '/'
-      fullPath: '/services/'
-      preLoaderRoute: typeof ServicesIndexRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/production-capabilities': {
-      id: '/services/production-capabilities'
-      path: '/production-capabilities'
-      fullPath: '/services/production-capabilities'
-      preLoaderRoute: typeof ServicesProductionCapabilitiesRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/product-development': {
-      id: '/services/product-development'
-      path: '/product-development'
-      fullPath: '/services/product-development'
-      preLoaderRoute: typeof ServicesProductDevelopmentRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/oem-manufacturing': {
-      id: '/services/oem-manufacturing'
-      path: '/oem-manufacturing'
-      fullPath: '/services/oem-manufacturing'
-      preLoaderRoute: typeof ServicesOemManufacturingRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/odm-solutions': {
-      id: '/services/odm-solutions'
-      path: '/odm-solutions'
-      fullPath: '/services/odm-solutions'
-      preLoaderRoute: typeof ServicesOdmSolutionsRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/factory-facilities': {
-      id: '/services/factory-facilities'
-      path: '/factory-facilities'
-      fullPath: '/services/factory-facilities'
-      preLoaderRoute: typeof ServicesFactoryFacilitiesRouteImport
-      parentRoute: typeof ServicesRoute
-    }
   }
 }
-
-interface ServicesRouteChildren {
-  ServicesFactoryFacilitiesRoute: typeof ServicesFactoryFacilitiesRoute
-  ServicesOdmSolutionsRoute: typeof ServicesOdmSolutionsRoute
-  ServicesOemManufacturingRoute: typeof ServicesOemManufacturingRoute
-  ServicesProductDevelopmentRoute: typeof ServicesProductDevelopmentRoute
-  ServicesProductionCapabilitiesRoute: typeof ServicesProductionCapabilitiesRoute
-  ServicesIndexRoute: typeof ServicesIndexRoute
-}
-
-const ServicesRouteChildren: ServicesRouteChildren = {
-  ServicesFactoryFacilitiesRoute: ServicesFactoryFacilitiesRoute,
-  ServicesOdmSolutionsRoute: ServicesOdmSolutionsRoute,
-  ServicesOemManufacturingRoute: ServicesOemManufacturingRoute,
-  ServicesProductDevelopmentRoute: ServicesProductDevelopmentRoute,
-  ServicesProductionCapabilitiesRoute: ServicesProductionCapabilitiesRoute,
-  ServicesIndexRoute: ServicesIndexRoute,
-}
-
-const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
-  ServicesRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -299,7 +125,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   ProductsRoute: ProductsRoute,
-  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
