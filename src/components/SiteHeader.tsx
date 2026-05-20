@@ -1,11 +1,22 @@
 import { Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/quantum-leap-logo.png";
+
+const serviceLinks = [
+  { to: "/services/oem-manufacturing", label: "OEM Manufacturing" },
+  { to: "/services/odm-solutions", label: "ODM Solutions" },
+  { to: "/services/production-capabilities", label: "Production Capabilities" },
+  { to: "/services/product-development", label: "Product Development" },
+  { to: "/services/factory-facilities", label: "Factory & Facilities" },
+] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -13,6 +24,15 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const openMenu = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  };
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setServicesOpen(false), 120);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
@@ -45,7 +65,44 @@ export function SiteHeader() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/products">Products</NavLink>
-          
+
+          <div
+            className="relative"
+            onMouseEnter={openMenu}
+            onMouseLeave={scheduleClose}
+          >
+            <Link
+              to="/services"
+              activeProps={{ className: "!text-primary" }}
+              className="relative inline-flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-foreground/75 hover:text-foreground rounded-md transition-colors"
+              onClick={() => setServicesOpen(false)}
+            >
+              Services
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+            </Link>
+            {servicesOpen && (
+              <div
+                className="absolute left-0 top-full pt-2 w-64"
+                onMouseEnter={openMenu}
+                onMouseLeave={scheduleClose}
+              >
+                <div className="rounded-xl border border-border bg-background shadow-glow p-2">
+                  {serviceLinks.map((s) => (
+                    <Link
+                      key={s.to}
+                      to={s.to}
+                      onClick={() => setServicesOpen(false)}
+                      activeProps={{ className: "bg-primary/10 text-primary" }}
+                      className="block px-3 py-2 text-sm rounded-md text-foreground/80 hover:bg-muted hover:text-foreground transition"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           <NavLink to="/faq">FAQ</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </nav>
@@ -65,9 +122,29 @@ export function SiteHeader() {
       {open && (
         <div className="md:hidden border-t border-border bg-background">
           <div className="flex flex-col p-4 gap-1">
-            {[["/", "Home"], ["/about", "About"], ["/products", "Products"], ["/faq", "FAQ"], ["/contact", "Contact"]].map(([to, label]) => (
-              <Link key={to} to={to} onClick={() => setOpen(false)} activeOptions={{ exact: to === "/" }} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">{label}</Link>
-            ))}
+            <Link to="/" onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">Home</Link>
+            <Link to="/about" onClick={() => setOpen(false)} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">About</Link>
+            <Link to="/products" onClick={() => setOpen(false)} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">Products</Link>
+
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen((v) => !v)}
+              className="flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium hover:bg-muted text-left"
+            >
+              Services
+              <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileServicesOpen && (
+              <div className="ml-3 flex flex-col border-l border-border pl-3 gap-0.5">
+                <Link to="/services" onClick={() => setOpen(false)} activeOptions={{ exact: true }} activeProps={{ className: "text-primary" }} className="px-3 py-2 rounded-md text-sm text-foreground/80 hover:bg-muted">All Services</Link>
+                {serviceLinks.map((s) => (
+                  <Link key={s.to} to={s.to} onClick={() => setOpen(false)} activeProps={{ className: "text-primary" }} className="px-3 py-2 rounded-md text-sm text-foreground/80 hover:bg-muted">{s.label}</Link>
+                ))}
+              </div>
+            )}
+
+            <Link to="/faq" onClick={() => setOpen(false)} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">FAQ</Link>
+            <Link to="/contact" onClick={() => setOpen(false)} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">Contact</Link>
           </div>
         </div>
       )}
