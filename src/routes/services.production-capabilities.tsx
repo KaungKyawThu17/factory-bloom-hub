@@ -79,7 +79,7 @@ const lines = [
 
 const stats = [
   { icon: Gauge, value: "24,000", label: "Max bottles per hour", suffix: "BPH" },
-  { icon: Factory, value: "5", label: "Production lines", suffix: "Lines" },
+  { icon: Factory, value: "6", label: "Production lines", suffix: "Lines" },
   { icon: Clock, value: "24/7", label: "Operational capacity", suffix: "Uptime" },
 ];
 
