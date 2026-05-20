@@ -45,7 +45,7 @@ export function SiteHeader() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/products">Products</NavLink>
-          <NavLink to="/services">Services</NavLink>
+          
           <NavLink to="/faq">FAQ</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </nav>
@@ -65,7 +65,7 @@ export function SiteHeader() {
       {open && (
         <div className="md:hidden border-t border-border bg-background">
           <div className="flex flex-col p-4 gap-1">
-            {[["/", "Home"], ["/about", "About"], ["/products", "Products"], ["/services", "Services"], ["/faq", "FAQ"], ["/contact", "Contact"]].map(([to, label]) => (
+            {[["/", "Home"], ["/about", "About"], ["/products", "Products"], ["/faq", "FAQ"], ["/contact", "Contact"]].map(([to, label]) => (
               <Link key={to} to={to} onClick={() => setOpen(false)} activeOptions={{ exact: to === "/" }} activeProps={{ className: "bg-primary/10 text-primary" }} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-muted">{label}</Link>
             ))}
           </div>
