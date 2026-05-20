@@ -40,10 +40,11 @@ const groups = [
     eyebrow: "02 — Utilities",
     icon: Zap,
     items: [
-      { icon: Zap,   label: "2500 KVA Transformers",   detail: "Stable power infrastructure" },
-      { icon: Fuel,  label: "CAT Generators",          detail: "Continuous backup power" },
-      { icon: Wind,  label: "Air Compressors",         detail: "High-pressure pneumatic supply" },
-      { icon: Fuel,  label: "Diesel Boiler Systems",   detail: "Process steam generation" },
+      { icon: Zap,     label: "2500 KVA Transformers",   detail: "Stable power infrastructure" },
+      { icon: Fuel,    label: "CAT Generators",          detail: "Continuous backup power" },
+      { icon: Wind,    label: "Air Compressors",         detail: "High-pressure pneumatic supply" },
+      { icon: Fuel,    label: "Diesel Boiler Systems",   detail: "Process steam generation" },
+      { icon: Recycle, label: "Wastewater Treatment",    detail: "Industrial wastewater purification and environmental treatment system" },
     ],
   },
   {
