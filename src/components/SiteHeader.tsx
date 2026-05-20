@@ -180,11 +180,6 @@ function LanguageToggle() {
     </div>
   );
 }
-        </div>
-      )}
-    </header>
-  );
-}
 
 function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   return (
