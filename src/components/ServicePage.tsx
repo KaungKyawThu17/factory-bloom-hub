@@ -20,7 +20,7 @@ export function ServicePage({
       <PageHero eyebrow={eyebrow} title={title} subtitle={subtitle} />
       <section className="py-20 mx-auto max-w-5xl px-4 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-          <Link to="/services" className="hover:text-primary transition-colors inline-flex items-center gap-1.5">
+          <Link to="/" className="hover:text-primary transition-colors inline-flex items-center gap-1.5">
             <ArrowLeft className="h-4 w-4" /> All Services
           </Link>
           <ChevronRight className="h-4 w-4" />
