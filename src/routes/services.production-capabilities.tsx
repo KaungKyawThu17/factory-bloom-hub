@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import welcomeImg from "@/assets/welcome.webp";
+import heroBg from "@/assets/pc-hero.webp";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 import {
   ArrowLeft, ArrowRight, Droplets, Layers, PackageOpen, Thermometer, Sparkles, Package, Gauge, Clock, Factory,
