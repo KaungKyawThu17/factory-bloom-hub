@@ -105,7 +105,7 @@ function Products() {
         </div>
       </section>
 
-      <section className="py-20 mx-auto max-w-7xl px-4 lg:px-8">
+      <section id="packaging" className="py-20 mx-auto max-w-7xl px-4 lg:px-8 scroll-mt-44 md:scroll-mt-52">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 rounded-full bg-accent/20 text-primary px-4 py-1.5 text-xs uppercase tracking-widest font-semibold">Packaging</div>
           <h2 className="font-display text-3xl md:text-4xl font-bold mt-4">Packaging Products</h2>
