@@ -17,7 +17,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesProductionCapabilitiesRouteImport } from './routes/services.production-capabilities'
 import { Route as ServicesProductDevelopmentRouteImport } from './routes/services.product-development'
 import { Route as ServicesOemManufacturingRouteImport } from './routes/services.oem-manufacturing'
-import { Route as ServicesOdmSolutionsRouteImport } from './routes/services.odm-solutions'
 import { Route as ServicesFactoryFacilitiesRouteImport } from './routes/services.factory-facilities'
 
 const ProductsRoute = ProductsRouteImport.update({
@@ -63,11 +62,6 @@ const ServicesOemManufacturingRoute =
     path: '/services/oem-manufacturing',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ServicesOdmSolutionsRoute = ServicesOdmSolutionsRouteImport.update({
-  id: '/services/odm-solutions',
-  path: '/services/odm-solutions',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesFactoryFacilitiesRoute =
   ServicesFactoryFacilitiesRouteImport.update({
     id: '/services/factory-facilities',
@@ -82,7 +76,6 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/products': typeof ProductsRoute
   '/services/factory-facilities': typeof ServicesFactoryFacilitiesRoute
-  '/services/odm-solutions': typeof ServicesOdmSolutionsRoute
   '/services/oem-manufacturing': typeof ServicesOemManufacturingRoute
   '/services/product-development': typeof ServicesProductDevelopmentRoute
   '/services/production-capabilities': typeof ServicesProductionCapabilitiesRoute
@@ -94,7 +87,6 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/products': typeof ProductsRoute
   '/services/factory-facilities': typeof ServicesFactoryFacilitiesRoute
-  '/services/odm-solutions': typeof ServicesOdmSolutionsRoute
   '/services/oem-manufacturing': typeof ServicesOemManufacturingRoute
   '/services/product-development': typeof ServicesProductDevelopmentRoute
   '/services/production-capabilities': typeof ServicesProductionCapabilitiesRoute
@@ -107,7 +99,6 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/products': typeof ProductsRoute
   '/services/factory-facilities': typeof ServicesFactoryFacilitiesRoute
-  '/services/odm-solutions': typeof ServicesOdmSolutionsRoute
   '/services/oem-manufacturing': typeof ServicesOemManufacturingRoute
   '/services/product-development': typeof ServicesProductDevelopmentRoute
   '/services/production-capabilities': typeof ServicesProductionCapabilitiesRoute
@@ -121,7 +112,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/products'
     | '/services/factory-facilities'
-    | '/services/odm-solutions'
     | '/services/oem-manufacturing'
     | '/services/product-development'
     | '/services/production-capabilities'
@@ -133,7 +123,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/products'
     | '/services/factory-facilities'
-    | '/services/odm-solutions'
     | '/services/oem-manufacturing'
     | '/services/product-development'
     | '/services/production-capabilities'
@@ -145,7 +134,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/products'
     | '/services/factory-facilities'
-    | '/services/odm-solutions'
     | '/services/oem-manufacturing'
     | '/services/product-development'
     | '/services/production-capabilities'
@@ -158,7 +146,6 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   ProductsRoute: typeof ProductsRoute
   ServicesFactoryFacilitiesRoute: typeof ServicesFactoryFacilitiesRoute
-  ServicesOdmSolutionsRoute: typeof ServicesOdmSolutionsRoute
   ServicesOemManufacturingRoute: typeof ServicesOemManufacturingRoute
   ServicesProductDevelopmentRoute: typeof ServicesProductDevelopmentRoute
   ServicesProductionCapabilitiesRoute: typeof ServicesProductionCapabilitiesRoute
@@ -222,13 +209,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesOemManufacturingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/odm-solutions': {
-      id: '/services/odm-solutions'
-      path: '/services/odm-solutions'
-      fullPath: '/services/odm-solutions'
-      preLoaderRoute: typeof ServicesOdmSolutionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/factory-facilities': {
       id: '/services/factory-facilities'
       path: '/services/factory-facilities'
@@ -246,7 +226,6 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   ProductsRoute: ProductsRoute,
   ServicesFactoryFacilitiesRoute: ServicesFactoryFacilitiesRoute,
-  ServicesOdmSolutionsRoute: ServicesOdmSolutionsRoute,
   ServicesOemManufacturingRoute: ServicesOemManufacturingRoute,
   ServicesProductDevelopmentRoute: ServicesProductDevelopmentRoute,
   ServicesProductionCapabilitiesRoute: ServicesProductionCapabilitiesRoute,
@@ -254,3 +233,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

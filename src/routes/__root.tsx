@@ -1,32 +1,72 @@
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
   createRootRouteWithContext,
+  useLocation,
   useRouter,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { LanguageProvider } from "@/i18n/LanguageContext";
+import { LanguageProvider, useLanguage } from "@/i18n/LanguageContext";
 
 import appCss from "../styles.css?url";
 import logo from "@/assets/quantum-leap-logo.png";
+import socialImage from "@/assets/hero-factory.jpg";
+
+const siteUrl = import.meta.env.VITE_SITE_URL?.trim();
+const siteTitle = "QUANTUM LEAP — မြန်မာနိုင်ငံ၏ OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်မှု";
+const siteDescription =
+  "QUANTUM LEAP သည် PET ပုလင်းသွတ်ခြင်း၊ အဖျော်ယမကာ ဖော်စပ်ခြင်းနှင့် စကေးချဲ့ထုတ်လုပ်မှု ဖြေရှင်းချက်များကို ပေးဆောင်သော မြန်မာနိုင်ငံအခြေစိုက် OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်သူဖြစ်ပါသည်။";
+const socialImageUrl = siteUrl ? new URL(socialImage, siteUrl).toString() : socialImage;
+
+const documentTitles = {
+  en: {
+    "/": "QUANTUM LEAP — Myanmar's Next Generation OEM Beverage Partner",
+    "/about": "About QUANTUM LEAP — Beverage Manufacturing",
+    "/products": "Products — QUANTUM LEAP",
+    "/faq": "FAQ — QUANTUM LEAP",
+    "/contact": "Contact — QUANTUM LEAP",
+    "/services/oem-manufacturing": "OEM and ODM Manufacturing — QUANTUM LEAP",
+    "/services/production-capabilities": "Production Capabilities — QUANTUM LEAP",
+    "/services/product-development": "Product Development — QUANTUM LEAP",
+    "/services/factory-facilities": "Factory & Facilities — QUANTUM LEAP",
+  },
+  my: {
+    "/": "QUANTUM LEAP — မြန်မာနိုင်ငံ၏ မျိုးဆက်သစ် OEM အဖျော်ယမကာ မိတ်ဖက်",
+    "/about": "ကျွန်ုပ်တို့အကြောင်း — QUANTUM LEAP Beverage Manufacturing",
+    "/products": "ထုတ်ကုန်များ — QUANTUM LEAP",
+    "/faq": "အမေးများသော မေးခွန်းများ — QUANTUM LEAP",
+    "/contact": "ဆက်သွယ်ရန် — QUANTUM LEAP",
+    "/services/oem-manufacturing": "OEM နှင့် ODM ထုတ်လုပ်မှု — QUANTUM LEAP",
+    "/services/production-capabilities": "ထုတ်လုပ်မှု စွမ်းဆောင်ရည်များ — QUANTUM LEAP",
+    "/services/product-development": "ထုတ်ကုန် ဖွံ့ဖြိုးတိုးတက်မှု — QUANTUM LEAP",
+    "/services/factory-facilities": "စက်ရုံနှင့် အခြေခံအဆောက်အအုံများ — QUANTUM LEAP",
+  },
+} as const;
+
+function getCanonicalUrl(pathname = "/") {
+  if (!siteUrl) return undefined;
+
+  return new URL(pathname, siteUrl).toString();
+}
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">စာမျက်နှာ မတွေ့ပါ</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          သင်ရှာဖွေနေသော စာမျက်နှာ မရှိတော့ပါ သို့မဟုတ် ပြောင်းရွှေ့ထားပါသည်။
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="focus-ring inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            ပင်မစာမျက်နှာသို့
           </Link>
         </div>
       </div>
@@ -42,10 +82,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          ဤစာမျက်နှာကို ဖွင့်၍မရပါ
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          စနစ်ပိုင်းဆိုင်ရာ ပြဿနာတစ်ခု ဖြစ်ပွားခဲ့ပါသည်။ ပြန်လည်စမ်းကြည့်နိုင်သည် သို့မဟုတ်
+          ပင်မစာမျက်နှာသို့ ပြန်သွားနိုင်ပါသည်။
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -53,16 +94,16 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="focus-ring inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            ထပ်စမ်းရန်
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          <Link
+            to="/"
+            className="focus-ring inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            Go home
-          </a>
+            ပင်မစာမျက်နှာသို့
+          </Link>
         </div>
       </div>
     </div>
@@ -70,33 +111,46 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Factory Forward is a modern website for production factories, showcasing services and capabilities." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Factory Forward is a modern website for production factories, showcasing services and capabilities." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { title: "QUANTUM LEAP — OEM Beverage Manufacturing in Myanmar" },
-      { name: "description", content: "QUANTUM LEAP is Myanmar's next-generation OEM & ODM beverage manufacturer. PET bottling, scalable production, FDA & Halal certified." },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Factory Forward is a modern website for production factories, showcasing services and capabilities." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c771f53d-a898-4b27-b313-9a5e42f615ed/id-preview-819ffc74--27b141d1-4b44-49ad-ada4-03d5c4805b17.lovable.app-1778567174848.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c771f53d-a898-4b27-b313-9a5e42f615ed/id-preview-819ffc74--27b141d1-4b44-49ad-ada4-03d5c4805b17.lovable.app-1778567174848.png" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" },
-      { rel: "preload", as: "image", href: logo },
-    ],
-  }),
+  head: ({ matches }) => {
+    const currentMatch = matches[matches.length - 1];
+    const canonicalUrl = getCanonicalUrl(currentMatch?.pathname);
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "theme-color", content: "#17396f" },
+        { title: siteTitle },
+        { name: "description", content: siteDescription },
+        { name: "author", content: "QUANTUM LEAP Beverage Manufacturing Co. Ltd." },
+        { property: "og:title", content: siteTitle },
+        { property: "og:description", content: siteDescription },
+        { property: "og:type", content: "website" },
+        ...(canonicalUrl ? [{ property: "og:url", content: canonicalUrl }] : []),
+        { property: "og:site_name", content: "QUANTUM LEAP" },
+        { property: "og:locale", content: "my_MM" },
+        { property: "og:image", content: socialImageUrl },
+        { property: "og:image:alt", content: "QUANTUM LEAP အဖျော်ယမကာ ထုတ်လုပ်ရေး စက်ရုံ" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: siteTitle },
+        { name: "twitter:description", content: siteDescription },
+        { name: "twitter:image", content: socialImageUrl },
+        { name: "twitter:image:alt", content: "QUANTUM LEAP အဖျော်ယမကာ ထုတ်လုပ်ရေး စက်ရုံ" },
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        ...(canonicalUrl ? [{ rel: "canonical", href: canonicalUrl }] : []),
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800;900&display=swap",
+        },
+        { rel: "preload", as: "image", href: logo },
+        { rel: "icon", href: logo },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -105,7 +159,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="my">
       <head>
         <HeadContent />
       </head>
@@ -123,8 +177,23 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
+        <DocumentLanguageSync />
         <Outlet />
       </LanguageProvider>
     </QueryClientProvider>
   );
+}
+
+function DocumentLanguageSync() {
+  const { lang } = useLanguage();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.documentElement.lang = lang === "my" ? "my" : "en";
+    const pathname = location.pathname.replace(/\/$/, "") || "/";
+    document.title = documentTitles[lang][pathname as keyof (typeof documentTitles)[typeof lang]]
+      ?? documentTitles[lang]["/"];
+  }, [lang, location.pathname]);
+
+  return null;
 }

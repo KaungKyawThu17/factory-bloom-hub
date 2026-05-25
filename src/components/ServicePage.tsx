@@ -5,7 +5,13 @@ import { ArrowRight, ArrowLeft, ChevronRight } from "lucide-react";
 import { CertificatesSlider } from "@/components/CertificatesSlider";
 
 export function ServicePage({
-  eyebrow, title, subtitle, intro, introHeadline, introBody, sections,
+  eyebrow,
+  title,
+  subtitle,
+  intro,
+  introHeadline,
+  introBody,
+  sections,
 }: {
   eyebrow: string;
   title: string;
@@ -13,15 +19,26 @@ export function ServicePage({
   intro?: string;
   introHeadline?: string;
   introBody?: string;
-  sections: { heading: string; body?: string; bullets?: string[]; items?: { title: string; body: string }[] }[];
+  sections: {
+    heading: string;
+    body?: string;
+    bullets?: string[];
+    items?: { title: string; body: string }[];
+  }[];
 }) {
   return (
     <Layout>
       <PageHero eyebrow={eyebrow} title={title} subtitle={subtitle} />
       <section className="py-20 mx-auto max-w-5xl px-4 lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-primary transition-colors inline-flex items-center gap-1.5">
-            <ArrowLeft className="h-4 w-4" /> All Services
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-8 flex items-center gap-2 text-sm text-muted-foreground"
+        >
+          <Link
+            to="/"
+            className="hover:text-primary transition-colors inline-flex items-center gap-1.5"
+          >
+            <ArrowLeft className="h-4 w-4" /> ဝန်ဆောင်မှုများအားလုံး
           </Link>
           <ChevronRight className="h-4 w-4" />
           <span className="text-foreground font-medium">{title}</span>
@@ -61,7 +78,9 @@ export function ServicePage({
                   {s.items.map((it, j) => (
                     <div key={j} className="rounded-2xl border border-border bg-card p-6">
                       <div className="font-display text-lg font-bold mb-2 flex items-center gap-3">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-brand text-white text-sm">{j + 1}</span>
+                        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-brand text-white text-sm">
+                          {j + 1}
+                        </span>
                         {it.title}
                       </div>
                       <p className="text-muted-foreground text-sm leading-relaxed">{it.body}</p>
@@ -74,10 +93,17 @@ export function ServicePage({
         </div>
 
         <div className="mt-16 rounded-3xl bg-gradient-brand p-10 text-white text-center shadow-glow">
-          <h3 className="font-display text-2xl md:text-3xl font-bold mb-3">Ready to discuss your project?</h3>
-          <p className="text-white/80 mb-6">Our team will guide you from initial enquiry to scaled production.</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-foreground px-6 py-3 font-semibold hover:scale-105 transition">
-            Contact our team <ArrowRight className="h-4 w-4" />
+          <h3 className="font-display text-2xl md:text-3xl font-bold mb-3">
+            သင့်စီမံကိန်းကို ဆွေးနွေးရန် အသင့်ဖြစ်ပါသလား?
+          </h3>
+          <p className="text-white/80 mb-6">
+            စတင်စုံစမ်းမှုမှ စကေးချဲ့ထုတ်လုပ်မှုအထိ ကျွန်ုပ်တို့အဖွဲ့က လမ်းညွှန်ပေးပါမည်။
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-white text-foreground px-6 py-3 font-semibold hover:scale-105 transition"
+          >
+            ကျွန်ုပ်တို့အဖွဲ့ကို ဆက်သွယ်ရန် <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
