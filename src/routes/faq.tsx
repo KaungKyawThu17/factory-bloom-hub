@@ -11,7 +11,7 @@ export const Route = createFileRoute("/faq")({
       { title: "FAQ — QUANTUM LEAP" },
       {
         name: "description",
-        content: "OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်မှု ဝန်ဆောင်မှုများအကြောင်း အမေးများသော မေးခွန်းများ။",
+        content: "Frequently asked questions about OEM and ODM beverage manufacturing services.",
       },
     ],
   }),

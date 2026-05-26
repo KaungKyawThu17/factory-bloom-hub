@@ -22,11 +22,11 @@ import {
 export const Route = createFileRoute("/services/production-capabilities")({
   head: () => ({
     meta: [
-      { title: "ထုတ်လုပ်မှု စွမ်းဆောင်ရည်များ — QUANTUM LEAP" },
+      { title: "Production Capabilities — QUANTUM LEAP" },
       {
         name: "description",
         content:
-          "PET ပုလင်းသွတ်လိုင်း၊ နှစ်မျိုးသုံး PET ပုလင်းသွတ်လိုင်း၊ Standing Pouch နှင့် UHT ထုတ်လုပ်မှုလိုင်းများ။",
+          "PET bottling, dual-purpose PET bottling, standing pouch, and UHT production lines.",
       },
     ],
   }),

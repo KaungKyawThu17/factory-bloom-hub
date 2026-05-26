@@ -20,11 +20,11 @@ import {
 export const Route = createFileRoute("/services/product-development")({
   head: () => ({
     meta: [
-      { title: "ထုတ်ကုန်ဖွံ့ဖြိုးတိုးတက်မှု — QUANTUM LEAP" },
+      { title: "Product Development — QUANTUM LEAP" },
       {
         name: "description",
         content:
-          "ဖော်မြူလာ၊ ထုပ်ပိုးမှု ပုံစံများ၊ အရည်အသွေး အာမခံချက်နှင့် ပို့ကုန် ပံ့ပိုးမှု။",
+          "Formulation, packaging formats, quality assurance, and export support for beverage brands.",
       },
     ],
   }),

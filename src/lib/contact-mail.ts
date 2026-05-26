@@ -98,7 +98,7 @@ function buildSubject(message: ContactMessage) {
 
 function buildTextBody(message: ContactMessage) {
   return [
-    "New website contact form submission",
+    "Website inquiry",
     "",
     `Name: ${message.name}`,
     `Company: ${message.company || "-"}`,
@@ -126,7 +126,7 @@ function buildHtmlBody(message: ContactMessage) {
 
   return `
     <div style="font-family: Arial, sans-serif; color: #111827; line-height: 1.5;">
-      <h2 style="margin: 0 0 16px;">New website contact form submission</h2>
+      <h2 style="margin: 0 0 16px;">Website inquiry</h2>
       <table style="border-collapse: collapse; width: 100%; max-width: 680px;">
         <tbody>
           ${rows

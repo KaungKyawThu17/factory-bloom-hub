@@ -21,11 +21,11 @@ import { useLanguage } from "@/i18n/LanguageContext";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "ထုတ်ကုန်များ — QUANTUM LEAP" },
+      { title: "Products — QUANTUM LEAP" },
       {
         name: "description",
         content:
-          "ထုပ်ပိုးမှုဆိုင်ရာ ထုတ်ကုန်များနှင့် အဖျော်ယမကာ OEM ထုတ်လုပ်မှု ဝန်ဆောင်မှုများ။",
+          "Packaging products and OEM beverage manufacturing services from QUANTUM LEAP.",
       },
     ],
   }),

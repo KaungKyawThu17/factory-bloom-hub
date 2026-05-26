@@ -16,9 +16,9 @@ import logo from "@/assets/quantum-leap-logo.png";
 import socialImage from "@/assets/hero-factory.jpg";
 
 const siteUrl = import.meta.env.VITE_SITE_URL?.trim();
-const siteTitle = "QUANTUM LEAP — မြန်မာနိုင်ငံ၏ OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်မှု";
+const siteTitle = "QUANTUM LEAP — Myanmar OEM and ODM Beverage Manufacturing";
 const siteDescription =
-  "QUANTUM LEAP သည် PET ပုလင်းသွတ်ခြင်း၊ အဖျော်ယမကာ ဖော်စပ်ခြင်းနှင့် စကေးချဲ့ထုတ်လုပ်မှု ဖြေရှင်းချက်များကို ပေးဆောင်သော မြန်မာနိုင်ငံအခြေစိုက် OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်သူဖြစ်ပါသည်။";
+  "QUANTUM LEAP is a Myanmar-based OEM and ODM beverage manufacturer offering PET bottling, beverage formulation, and scale-up production solutions.";
 const socialImageUrl = siteUrl ? new URL(socialImage, siteUrl).toString() : socialImage;
 
 const documentTitles = {
@@ -57,16 +57,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">စာမျက်နှာ မတွေ့ပါ</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          သင်ရှာဖွေနေသော စာမျက်နှာ မရှိတော့ပါ သို့မဟုတ် ပြောင်းရွှေ့ထားပါသည်။
+          The page you are looking for no longer exists or has been moved.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="focus-ring inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            ပင်မစာမျက်နှာသို့
+            Back to home
           </Link>
         </div>
       </div>
@@ -82,11 +82,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          ဤစာမျက်နှာကို ဖွင့်၍မရပါ
+          This page could not be loaded
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          စနစ်ပိုင်းဆိုင်ရာ ပြဿနာတစ်ခု ဖြစ်ပွားခဲ့ပါသည်။ ပြန်လည်စမ်းကြည့်နိုင်သည် သို့မဟုတ်
-          ပင်မစာမျက်နှာသို့ ပြန်သွားနိုင်ပါသည်။
+          A system issue occurred. You can try again or return to the home page.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -96,13 +95,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="focus-ring inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            ထပ်စမ်းရန်
+            Try again
           </button>
           <Link
             to="/"
             className="focus-ring inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            ပင်မစာမျက်နှာသို့
+            Back to home
           </Link>
         </div>
       </div>
@@ -128,14 +127,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { property: "og:type", content: "website" },
         ...(canonicalUrl ? [{ property: "og:url", content: canonicalUrl }] : []),
         { property: "og:site_name", content: "QUANTUM LEAP" },
-        { property: "og:locale", content: "my_MM" },
+        { property: "og:locale", content: "en_US" },
         { property: "og:image", content: socialImageUrl },
-        { property: "og:image:alt", content: "QUANTUM LEAP အဖျော်ယမကာ ထုတ်လုပ်ရေး စက်ရုံ" },
+        { property: "og:image:alt", content: "QUANTUM LEAP beverage manufacturing factory" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: siteTitle },
         { name: "twitter:description", content: siteDescription },
         { name: "twitter:image", content: socialImageUrl },
-        { name: "twitter:image:alt", content: "QUANTUM LEAP အဖျော်ယမကာ ထုတ်လုပ်ရေး စက်ရုံ" },
+        { name: "twitter:image:alt", content: "QUANTUM LEAP beverage manufacturing factory" },
       ],
       links: [
         { rel: "stylesheet", href: appCss },
@@ -159,7 +158,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="my">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -191,8 +190,9 @@ function DocumentLanguageSync() {
   useEffect(() => {
     document.documentElement.lang = lang === "my" ? "my" : "en";
     const pathname = location.pathname.replace(/\/$/, "") || "/";
-    document.title = documentTitles[lang][pathname as keyof (typeof documentTitles)[typeof lang]]
-      ?? documentTitles[lang]["/"];
+    document.title =
+      documentTitles[lang][pathname as keyof (typeof documentTitles)[typeof lang]] ??
+      documentTitles[lang]["/"];
   }, [lang, location.pathname]);
 
   return null;

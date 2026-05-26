@@ -86,11 +86,11 @@ export const Route = createFileRoute("/contact")({
   }),
   head: () => ({
     meta: [
-      { title: "ဆက်သွယ်ရန် — QUANTUM LEAP" },
+      { title: "Contact Us — QUANTUM LEAP" },
       {
         name: "description",
         content:
-          "ရန်ကုန်အခြေစိုက် OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်ရေးအဖွဲ့နှင့် ဆက်သွယ်ပါ။",
+          "Get in touch with our OEM and ODM beverage manufacturing team in Yangon, Myanmar.",
       },
     ],
   }),

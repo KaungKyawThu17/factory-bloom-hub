@@ -39,11 +39,11 @@ import {
 export const Route = createFileRoute("/services/factory-facilities")({
   head: () => ({
     meta: [
-      { title: "စက်ရုံနှင့် အခြေခံအဆောက်အအုံများ — QUANTUM LEAP" },
+      { title: "Factory & Facilities — QUANTUM LEAP" },
       {
         name: "description",
         content:
-          "၁၀ ဧက စက်မှုဝန်း၊ ထုတ်လုပ်မှု စက်ကိရိယာများ၊ အထောက်အကူပြု စနစ်များ၊ အအေးခန်းနှင့် ကုန်လှောင်ရုံများ။",
+          "A 10-acre industrial campus with production equipment, utility systems, cold storage, and warehouse facilities.",
       },
     ],
   }),

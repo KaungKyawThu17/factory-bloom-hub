@@ -23,11 +23,11 @@ export const Route = createFileRoute("/services/oem-manufacturing")({
   }),
   head: () => ({
     meta: [
-      { title: "OEM နှင့် ODM ထုတ်လုပ်မှု — QUANTUM LEAP" },
+      { title: "OEM and ODM Manufacturing — QUANTUM LEAP" },
       {
         name: "description",
         content:
-          "အသင့်သောက် အဖျော်ယမကာများအတွက် ယုံကြည်စိတ်ချရသော OEM နှင့် ODM ထုတ်လုပ်မှု မိတ်ဖက်။",
+          "A trusted OEM and ODM manufacturing partner for ready-to-drink beverages.",
       },
     ],
   }),

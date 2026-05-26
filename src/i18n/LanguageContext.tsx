@@ -10,26 +10,30 @@ type Ctx = {
 const LanguageContext = createContext<Ctx | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("my");
+  const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem("lang") as Lang | null;
       if (saved === "en" || saved === "my") setLangState(saved);
-    } catch {}
+    } catch {
+      // Ignore storage access errors in restricted browser contexts.
+    }
   }, []);
 
   const setLang = (l: Lang) => {
     setLangState(l);
-    try { localStorage.setItem("lang", l); } catch {}
+    try {
+      localStorage.setItem("lang", l);
+    } catch {
+      // Ignore storage access errors in restricted browser contexts.
+    }
   };
 
   const t = (key: TranslationKey) => translations[lang][key] ?? translations.en[key] ?? key;
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
-      {children}
-    </LanguageContext.Provider>
+    <LanguageContext.Provider value={{ lang, setLang, t }}>{children}</LanguageContext.Provider>
   );
 }
 

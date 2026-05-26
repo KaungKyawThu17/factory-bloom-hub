@@ -9,11 +9,11 @@ import { useLanguage } from "@/i18n/LanguageContext";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "ကျွန်ုပ်တို့အကြောင်း — QUANTUM LEAP Beverage Manufacturing" },
+      { title: "About QUANTUM LEAP — Beverage Manufacturing" },
       {
         name: "description",
         content:
-          "Quantum Leap သည် OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်မှုအပေါ် အဓိကထားသည့် မျိုးဆက်သစ် အဖျော်ယမကာ ထုတ်လုပ်ရေး ကုမ္ပဏီတစ်ခု ဖြစ်ပါသည်။",
+          "QUANTUM LEAP is a next-generation beverage manufacturing company focused on OEM and ODM beverage production.",
       },
     ],
   }),

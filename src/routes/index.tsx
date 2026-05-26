@@ -42,11 +42,11 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "QUANTUM LEAP — မြန်မာနိုင်ငံ၏ မျိုးဆက်သစ် OEM အဖျော်ယမကာ မိတ်ဖက်" },
+      { title: "QUANTUM LEAP — Myanmar's Next Generation OEM Beverage Partner" },
       {
         name: "description",
         content:
-          "မြန်မာနိုင်ငံအခြေစိုက် OEM နှင့် ODM အဖျော်ယမကာ ထုတ်လုပ်မှု။ PET ပုလင်းသွတ်ခြင်း၊ တစ်နာရီလျှင် ပုလင်း ၂၄,၀၀၀ အထိ ထုတ်လုပ်နိုင်မှု၊ FDA နှင့် Halal အသိအမှတ်ပြု လုပ်ငန်းစဉ်များ။",
+          "Myanmar-based OEM and ODM beverage manufacturing with PET bottling, up to 24,000 bottles per hour, and FDA and Halal certified operations.",
       },
     ],
     links: [{ rel: "preload", as: "image", href: heroPosterImg }],
